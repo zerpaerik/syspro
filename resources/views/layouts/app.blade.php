@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>sysMadreTeresa</title>
+    <title>SYSMEDIC</title>
     <meta name="description" content="description">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="DevOOPS">

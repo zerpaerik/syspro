@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Login | sysMadreTeresa</title>
+		<title>Login | SYSMEDIC</title>
 		<meta name="description" content="description">
 		<meta name="author" content="Evgeniya">
 		<meta name="keyword" content="keywords">
@@ -24,7 +24,7 @@
 			<div class="box">
 				<div class="box-content">
 					<div class="text-center">
-						   <img src="{{url('img/logo.jpeg')}}" style="width: 100%;">
+						   <img src="{{url('img/sysmedic.jpg')}}" style="width: 100%;">
 					</div>
 					<form method="POST" action="login">
 						@if($data)

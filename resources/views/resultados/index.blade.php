@@ -141,14 +141,7 @@
                                     <option value="MAMAS FIBROADENOMA MAMA DER.docx">MAMAS FIBROADENOMA MAMA DER</option>
                                     <option value="MAMAS FIBROADENOMA MAMA IZQ.docx">MAMAS FIBROADENOMA MAMA IZQ</option>
                                     <option value="MAMAS.docx">MAMAS</option>
-                                    <option value="OBST 4D II TRIMESTRE-2p.docx">OBST 4D II TRIMESTRE-2p</option>
-                                    <option value="OBST 4D II TRIMESTRE-3p.docx">OBST 4D II TRIMESTRE-3p</option>
-                                    <option value="OBST 4D III TRIMESTRE CC-2p.docx">OBST 4D III TRIMESTRE CC-2p</option>
-                                    <option value="OBST 4D III TRIMESTRE CC-3p.docx">OBST 4D III TRIMESTRE CC-3p</option>
-                                    <option value="OBST 4D III TRIMESTRE-2p.docx">OBST 4D III TRIMESTRE-2p</option>
-                                    <option value="OBST 4D III TRIMESTRE-3p.docx">OBST 4D III TRIMESTRE-3p</option>
-                                    <option value="OBST 5D II TRIMESTRE-2p.docx">OBST 5D II TRIMESTRE-2p</option>
-                                    <option value="OBST 5D III TRIMESTRE-2p.docx">OBST 5D III TRIMESTRE-2p</option>
+                                   
                                     <option value="OBST DOPPLER TAMIZAJE II TRIMESTRE NRML-3p.docx">OBST DOPPLER TAMIZAJE II TRIMESTRE NRML-3p</option>
                                     <option value="OBST GEMELAR II, III TRIMESTRE BICO, BIAMN.docx">OBST GEMELAR II, III TRIMESTRE BICO, BIAMN</option>
                                     <option value="OBST I EMBRION 6 - 8 SEMANAS.docx">OBST I EMBRION 6 - 8 SEMANAS</option>
