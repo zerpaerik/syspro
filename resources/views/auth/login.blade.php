@@ -24,7 +24,7 @@
 			<div class="box">
 				<div class="box-content">
 					<div class="text-center">
-						   <img src="{{url('img/sysmedic.jpg')}}" style="width: 100%;">
+						   <img src="{{url('img/logo.jpg')}}" style="width: 100%;">
 					</div>
 					<form method="POST" action="login">
 						@if($data)
