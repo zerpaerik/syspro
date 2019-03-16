@@ -89,8 +89,6 @@ class ReportesController extends Controller
         ->first();
 
 
-
-
        $view = \View::make('reportes.recibocobro', compact('recibo'));
       
        //$view = \View::make('reportes.cierre_caja_ver')->with('caja', $caja);
@@ -100,7 +98,7 @@ class ReportesController extends Controller
        return $pdf->stream('cobro');
 
   }
-}
+
 
 
     public function historialp(Request $request)
@@ -144,6 +142,7 @@ class ReportesController extends Controller
 
         return view('reportes.historial.pacientes',["pacientes" => $pacientes,"atenciones" => $atenciones,"event" => $event,"metodos" => $metodos]);
     }
+
 
     public function update($id,Request $request)
     {      
