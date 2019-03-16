@@ -8,7 +8,7 @@
      
 
      <div class="" style="font-size: 40px; text-align: center;margin-bottom: 60px;">
-        <p><strong>GRUPO MASTER SALUD</strong></p>
+        <p><strong>MADRE TERESA</strong></p>
     </div>
 
     <div class="" style="font-size: 40px; text-align: left;margin-bottom: 60px;">
