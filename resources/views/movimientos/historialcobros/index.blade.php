@@ -71,6 +71,7 @@
 							<th>Monto Total Abonado</th>
 							<th>Monto Pendiente</th>
 							<th>Fecha</th>
+							<th>Recibo</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>
@@ -86,6 +87,10 @@
 								<td>{{$atec->abono}}</td>
 								<td>{{$atec->pendiente}}</td>
 								<td>{{$atec->updated_at}}</td>
+									<td>
+						       <a target="_blank" href="{{asset('recibo_cobro_ver')}}/{{$atec->id}}" class="btn btn-xs btn-danger">Recibo</a>
+
+								</td>
 								<td>
 										@if(\Auth::user()->role_id = 4)							 
 									<a class="btn btn-danger" href="historialcobros-delete-{{$atec->id_atencion}}"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>	
@@ -93,6 +98,7 @@
 									@endif
 
 								</td>
+							
 							</tr>
 						@endforeach
 					</tbody>

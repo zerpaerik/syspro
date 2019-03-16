@@ -279,6 +279,9 @@ Route::post('cuentasporcobrar/edit', 'CuentasporCobrarController@edit');
 Route::get('historialcobros', 'HistorialCobrosController@index')->name('historialcobros.index')->middleware('auth');
 Route::get('historialcobros-delete-{id}','HistorialCobrosController@delete');
 
+Route::get('recibo_cobro_ver/{id}','ReportesController@recibo_cobro_ver');
+
+
 Route::get('labpagados', 'LaboratoriosPagadosController@index')->name('labpagados.index')->middleware('auth');
 
 Route::get('labpagados-reversar-{id}', 'LaboratoriosPagadosController@reversar');

@@ -79,6 +79,30 @@ class ReportesController extends Controller
         return view('resultadosguardados.editar', ["resultados" => $resultados]);
     }
 
+    
+      public function recibo_cobro_ver($id)
+  { 
+        $recibo = DB::table('historialcobros as a')
+        ->select('a.id','a.id_atencion','a.id_paciente','a.monto','a.abono_parcial','a.abono','a.pendiente','b.nombres','b.apellidos','a.created_at','a.updated_at')
+        ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.id','=',$id)
+        ->first();
+
+
+
+
+       $view = \View::make('reportes.recibocobro', compact('recibo'));
+      
+       //$view = \View::make('reportes.cierre_caja_ver')->with('caja', $caja);
+       $pdf = \App::make('dompdf.wrapper');
+       //$pdf->setPaper('A5', 'landscape');
+       $pdf->loadHTML($view);
+       return $pdf->stream('cobro');
+
+  }
+}
+
+
     public function historialp(Request $request)
     {
          $atenciones = DB::table('atenciones as a')
