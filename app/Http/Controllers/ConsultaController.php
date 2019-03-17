@@ -272,6 +272,8 @@ class ConsultaController extends Controller
 
     $consulta->piel =$request->piel;
     $consulta->mamas =$request->mamas;
+     $consulta->amenorrea =$request->amenorrea;
+    $consulta->andria =$request->andria;
     $consulta->abdomen =$request->abdomen;
     $consulta->genext =$request->genext;
     $consulta->genint =$request->genint;
@@ -314,6 +316,11 @@ class ConsultaController extends Controller
     }
       public function edit(Request $request)
     {
+
+      $users = DB::table('users')
+            ->select('*')
+            ->where('id','=',\Auth::user()->id)
+            ->first();
       
     $consulta = Consulta::find($request->id);
     $consulta->pa =$request->pa;
@@ -335,11 +342,13 @@ class ConsultaController extends Controller
     $consulta->observaciones =$request->observaciones;
     $consulta->profesional_id =$request->profesional_id;
     $consulta->prox =$request->prox;
-    $consulta->personal =$request->personal;
+    $consulta->personal =$users->name . " " .$users->lastname;
     $consulta->apetito =$request->apetito;
     $consulta->sed =$request->sed;
     $consulta->orina =$request->orina;
     $consulta->animo =$request->animo;
+     $consulta->amenorrea =$request->amenorrea;
+    $consulta->andria =$request->andria;
     $consulta->g =$request->g;
     $consulta->p =$request->p;
     $consulta->pap =$request->pap;

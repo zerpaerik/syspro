@@ -85,11 +85,21 @@
 				<input   class="form-control" type="text" name="tipo_enfermedad" value="{{$historias->tipo_enfermedad}}">
 			</div>
 			<br>
-			<label for="" class="col-sm-12 control-label"><strong>Solo para pacientes Femeninas:</strong></label>
+		
 
 			<label for="" class="col-sm-2 control-label">FUR:</label>
 			<div class="col-sm-4">	
 				<input class="form-control" type="date" name="fur" value="{{$historias->fur}}">
+			</div>
+
+				<label for="" class="col-sm-2 control-label">Amenorrea:</label>
+			<div class="col-sm-4">	
+				<input class="form-control" type="text" name="fur" value="{{$historias->amenorrea}}">
+			</div>
+
+				<label for="" class="col-sm-2 control-label">Andria:</label>
+			<div class="col-sm-4">	
+				<input class="form-control" type="text" name="fur" value="{{$historias->andria}}">
 			</div>
 
 			<label for="" class="col-sm-2 control-label">PAP:</label>
@@ -128,7 +138,7 @@
 		
 			<label class="col-sm-2">CIE-X:</label>
 			<div class="col-sm-4">
-				<select id="el3" name="ciex" value="{{$historias->CIEX}}">
+				<select id="el6" name="ciex" value="{{$historias->CIEX}}">
 					@foreach($ciex as $c)
 					<option value="{{$c->codigo}}-{{$c->nombre}}">
 						{{$c->codigo}}-{{$c->nombre}}
@@ -140,7 +150,7 @@
 			</div>
             
 		<div class="row">
-			<label for="" class="col-sm-2 ">Diag.Final</label>
+			<label for="" class="col-sm-2 control-label">Diag.Final</label>
 			<div class="col-sm-4">	
 				<input   class="form-control" placeholder="Diagnostica Final" type="text" name="diagnostico_final" value="{{$historias->diagnostico_final}}">
 			</div>
@@ -162,6 +172,10 @@
 			<div class="col-sm-4">	
 				<input   class="form-control" type="text" name="examen_auxiliar" value="{{$historias->examen_auxiliar}}">
 			</div>
+
+			<div class="col-sm-4">	
+				<input   class="form-control" type="text" name="examen_auxiliar" value="{{$historias->examen_auxiliar}}" disabled="">
+			</div>
 			
 			
 			<div class="row">
@@ -180,21 +194,6 @@
 				<input type="date" name="prox" class="form-control" value="{{$historias->prox}}">
 			</div>
 
-
-
-
-
-
-			<label class="col-sm-2">Personal Responsable:</label>
-			<div class="col-sm-3">
-				<select id="el1" name="personal" value="{{$historias->personal}}">
-					@foreach($personal as $per)
-					<option value="{{$per->name}},{{$per->lastname}}">
-						{{$per->name}} {{$per->lastname}}
-					</option>
-					@endforeach
-				</select>
-			</div> 
 
 				
 			
@@ -371,6 +370,8 @@ function Select2Test(){
 	$("#el3").select2();
   $("#el5").select2();
   $("#el4").select2();
+    $("#el6").select2();
+
 }
 $(document).ready(function() {
 	// Load script of Select2 and run this

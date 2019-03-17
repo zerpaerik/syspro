@@ -141,6 +141,8 @@
 				<p class="col-sm-6"><strong>Temperatura:</strong> {{ $consulta->temperatura }}ºC</p>
 				<p class="col-sm-6"><strong>Peso:</strong> {{ $consulta->peso }} kG</p>
 				<p class="col-sm-6"><strong>FUR:</strong> {{ $consulta->fur }}</p>
+				<p class="col-sm-6"><strong>Amenorrea:</strong> {{ $consulta->amenorrea }}</p>
+				<p class="col-sm-6"><strong>Andria:</strong> {{ $consulta->andria }}</p>
 				<p class="col-sm-6"><strong>PAP:</strong> {{ $consulta->pap }}</p>
 			    <p class="col-sm-6"><strong>MAC:</strong> {{ $consulta->MAC }}</p>
 				<p class="col-sm-6"><strong>P:</strong> {{ $consulta->p }},<strong>G</strong>:{{ $consulta->g }}</p>
@@ -280,6 +282,18 @@
 			<label for="" class="col-sm-2 control-label">FUR:</label>
 			<div class="col-sm-4">	
 				<input class="form-control" type="date" name="fur">
+			</div>
+
+
+			<label for="" class="col-sm-2 control-label">Amenorrea:</label>
+			<div class="col-sm-4">	
+				<input class="form-control" type="text" name="amenorrea">
+			</div>
+
+
+			<label for="" class="col-sm-2 control-label">Andria:</label>
+			<div class="col-sm-4">	
+				<input class="form-control" type="text" name="andria">
 			</div>
 
 			<label for="" class="col-sm-2 control-label">PAP:</label>
