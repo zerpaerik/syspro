@@ -30,11 +30,11 @@
 			<div class="row">
 				<div class="col-md-2">
 					<label>Fecha Inicio</label>
-					<input type="date" value="{{$f1}}" name="fecha" style="line-height: 20px">
+					<input type="date" value="" name="fecha" style="line-height: 20px">
 				</div>
 				<div class="col-md-2">
 					<label>Fecha Fin</label>
-					<input type="date" value="{{$f2}}" name="fecha2" style="line-height: 20px">
+					<input type="date" value="" name="fecha2" style="line-height: 20px">
 				</div>
 				<div class="col-md-4">
 
