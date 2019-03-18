@@ -200,7 +200,7 @@ class MetodosController extends Controller
     return redirect()->action('MetodosController@index1', ["deleted" => true, "metodo" => Metodos::all()]);
   }
 
-  public function createView() {
+  public function createView(Request $request) {
 
    $pacientes =Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get();
    $personal =Personal::where("estatus", '=', 1)->orderby('lastname','asc')->get();
