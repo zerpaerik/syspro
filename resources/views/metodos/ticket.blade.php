@@ -62,23 +62,33 @@ margin-top: -20px;
 <body>
 
 
-<div class="paciente">
-		<p><strong>Paciente: {{$metodos->nombres}} {{$metodos->apellidos}}</strong></p>
+<div class="" style="font-size: 40px; text-align: center;">
+		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
+	    <p><strong>TICKET:0000{{ $metodos->id}}</strong></p>
 	</div>
 
-	<div class="fecha">
-		<p><strong>Fecha: {{ $metodos->created_at}}</strong></p>
-	</div>
-	<div class="servicios">
-		<p><strong>Mètodo: {{ $metodos->producto}}</strong></p>
+    <div class="" style="font-size: 40px; text-align: left;margin-bottom:-15px;">
+		<p><strong>FECHA:{{ $metodos->created_at}}</strong></p>
 	</div>
 
-	<div class="servicios">
-		<p><strong></strong></p>
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-15px;">
+		<p><strong>PACIENTE:{{ $metodos->nombres}},{{ $metodos->apellidos}}</strong></p>
 	</div>
 
-	<div class="total">
-		<p><strong>Monto: {{ $metodos->monto}}</strong></p>
+	
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-15px;">
+		<p><strong>MÈTODOS ANTICONCEPTIVOS:{{ $metodos->producto}}
+		</strong></p>
 	</div>
+
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-15px;">
+		<p><strong> MONTO TOTAL: {{ $metodos->monto}}</strong></p>
+	</div>
+
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-15px;">
+		<p><strong> MONTO PAGADO: {{ $metodos->monto}}</strong></p>
+	</div>
+
+	
 </body>
 </html>

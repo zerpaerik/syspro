@@ -57,13 +57,13 @@ margin-top: -20px;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Ticket de Consulta</title>
+	<title>Ticket de Consultas</title>
 </head>
 <body>
 
 
     <div class="" style="font-size: 40px; text-align: center; margin-bottom: -15px;">
-		<p><strong>MADRE TERESA</strong></p>
+		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
 	    <p><strong>TICKET:0000{{ $paciente->EventId}}</strong></p>
 	</div>
 
@@ -80,7 +80,6 @@ margin-top: -20px;
 		<p><strong>ESPECIALISTA:{{ $paciente->nombrePro}} {{ $paciente->apellidoPro}}
 		</strong></p>
 	</div>
-
 
 	<div class="" style="font-size: 40px; text-align: left;">
 		<p><strong> MONTO: {{ $paciente->monto}}</strong></p>
