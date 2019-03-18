@@ -204,7 +204,7 @@ class MetodosController extends Controller
 
    $pacientes =Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get();
    $personal =Personal::where("estatus", '=', 1)->orderby('lastname','asc')->get();
-   $productos =Producto::where("almacen",'=',2)->where("categoria",'=',3)->orderby('nombre','asc')->get();
+   $productos =Producto::where("almacen",'=',2)->where("categoria",'=',3)->where("sede_id",'=',$request->session()->get('sede'))->orderby('nombre','asc')->get();
 
     return view('metodos.create', compact('pacientes','productos','personal'));
   }
