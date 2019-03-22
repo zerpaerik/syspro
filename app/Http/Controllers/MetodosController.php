@@ -43,7 +43,6 @@ class MetodosController extends Controller
 		->join('users as c','c.id','a.id_usuario')
 		->join('pacientes as b','b.id','a.id_paciente')
 		->join('productos as d','d.id','a.id_producto')
-
        ->whereDate('a.created_at', '=',Carbon::today()->toDateString())
         ->where('a.sede','=',$request->session()->get('sede'))
         ->orderBy('a.created_at','asc')
@@ -100,10 +99,11 @@ class MetodosController extends Controller
   public function ticket_ver($id) 
   {
     $metodos = DB::table('metodos as a')
-            ->select('a.id','a.id_paciente','a.id_usuario','a.estatus','a.monto','a.proximo','a.created_at','a.id_producto','c.name','c.lastname','b.nombres','b.apellidos','b.telefono','b.dni','d.nombre as producto')
+            ->select('a.id','a.id_paciente','a.id_usuario','a.estatus','a.monto','a.proximo','a.created_at','a.id_producto','c.name','c.lastname','b.nombres','b.apellidos','b.telefono','b.dni','d.nombre as producto','cr.tipo_ingreso')
            ->join('users as c','c.id','a.id_usuario')
            ->join('pacientes as b','b.id','a.id_paciente')
            ->join('productos as d','d.id','a.id_producto')
+           ->join('creditos as cr','cr.id_metodo','a.id')
             ->where('a.id','=',$id)
             ->first();
 

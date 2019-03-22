@@ -44,6 +44,7 @@
 							<th>Monto</th>
 							<th>Monto Abonado</th>
 							<th>Fecha</th>
+							<th>TipoIngreso</th>
 							<th>Registrado Por:</th>
 							<th>Acciones</th>
 							<th></th>
@@ -65,6 +66,7 @@
 						<td>{{$d->monto}}</td>
 						<td>{{$d->abono}}</td>
 						<td>{{date('d-m-Y H:i', strtotime($d->created_at))}}</td>
+						<td>{{$d->tipo_ingreso}}</td>
 						<td>{{$d->user}},{{$d->userp}}</td>
 		                <td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket</a></td>	
 						      @if(\Auth::user()->role_id <> 6)							 
