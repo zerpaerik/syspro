@@ -344,7 +344,7 @@ class ReportesController extends Controller
         }
 
 
-        $hoy=date('d-m-Y');
+        $hoy=$request->fecha;
 
         $view = \View::make('reportes.diario', compact('atenciones', 'consultas','otros_servicios', 'cuentasXcobrar', 'egresos', 'tarjeta', 'efectivo', 'totalEgresos', 'totalIngresos','metodos','hoy'));
 
@@ -934,7 +934,7 @@ class ReportesController extends Controller
     
     
      
-        $hoy=date('d-m-Y');
+        $hoy=$request->fecha;
        
         $view = \View::make('reportes.detallado', compact('servicios', 'totalServicios','laboratorios', 'totalLaboratorios', 'consultas', 'totalconsultas','otrosingresos','totalotrosingresos','cuentasporcobrar','totalcuentasporcobrar','paquetes','totalPaquetes','metodos','totalmetodos','hoy'));
 
