@@ -810,7 +810,7 @@ class ReportesController extends Controller
 
     }
 
-    public function relacion_detallado(Request $request)
+   public function relacion_detallado(Request $request)
     {
 
         $servicios = DB::table('atenciones as a')
@@ -826,7 +826,7 @@ class ReportesController extends Controller
         ->get();
 
         $totalServicios = Atenciones::where('es_servicio',1)
-		                            ->where('id_sede','=', $request->session()->get('sede'))
+                                    ->where('id_sede','=', $request->session()->get('sede'))
                                     ->whereNotIn('monto',[0,0.00,99999])
                                     ->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
                                     ->select(DB::raw('SUM(abono) as abono'))
@@ -837,7 +837,7 @@ class ReportesController extends Controller
         ->join('pacientes as b','b.id','a.id_paciente')
         ->join('analises as c','c.id','a.id_laboratorio')
         ->join('users as e','e.id','a.origen_usuario')
-		->where('a.id_sede','=', $request->session()->get('sede'))
+        ->where('a.id_sede','=', $request->session()->get('sede'))
         ->where('a.es_laboratorio','=', 1)
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
         ->where('a.id_sede','=', $request->session()->get('sede'))
@@ -847,16 +847,16 @@ class ReportesController extends Controller
 
         $totalLaboratorios = Atenciones::where('es_laboratorio',1)
                                     ->whereNotIn('monto',[0,0.00,99999])
-		                            ->where('id_sede','=', $request->session()->get('sede'))
+                                    ->where('id_sede','=', $request->session()->get('sede'))
                                     ->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
                                     ->select(DB::raw('SUM(abono) as abono'))
                                     ->first();
-		 $paquetes = DB::table('atenciones as a')
+         $paquetes = DB::table('atenciones as a')
         ->select('a.id','a.created_at','a.id_paciente','a.origen_usuario','a.origen','a.id_servicio','a.id_paquete','a.id_laboratorio','a.es_laboratorio','a.monto','a.tipopago','a.porcentaje','a.abono','a.id_sede','b.nombres','b.apellidos','c.detalle as paquete','e.name','e.lastname')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->join('paquetes as c','c.id','a.id_paquete')
         ->join('users as e','e.id','a.origen_usuario')
-		->where('a.id_sede','=', $request->session()->get('sede'))
+        ->where('a.id_sede','=', $request->session()->get('sede'))
         ->where('a.es_paquete','=', 1)
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
         ->where('a.id_sede','=', $request->session()->get('sede'))
@@ -866,15 +866,15 @@ class ReportesController extends Controller
 
         $totalPaquetes = Atenciones::where('es_paquete',1)
                                      ->whereNotIn('monto',[0,0.00,99999])
-		                            ->where('id_sede','=', $request->session()->get('sede'))
+                                    ->where('id_sede','=', $request->session()->get('sede'))
                                     ->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
                                     ->select(DB::raw('SUM(abono) as abono'))
-                                    ->first();						
+                                    ->first();                      
        
          $consultas = DB::table('events as a')
-        ->select('a.id','a.profesional','a.paciente','a.sede','a.monto','a.created_at','b.nombres','b.apellidos','c.name','c.apellidos as apepro')
+        ->select('a.id','a.profesional','a.paciente','a.sede','a.monto','a.created_at','b.nombres','b.apellidos','c.name','c.lastname as apepro')
         ->join('pacientes as b','b.id','a.paciente')
-        ->join('profesionales as c','c.id','a.profesional')
+        ->join('personals as c','c.id','a.profesional')
         ->where('a.sede','=', $request->session()->get('sede'))
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
         ->orderby('a.id','desc')
@@ -931,12 +931,27 @@ class ReportesController extends Controller
                                     ->first();
 
 
+       $ventas = DB::table('ventas_productos as a')
+        ->select('a.id','a.id_producto','a.cantidad','a.paciente','a.monto','b.nombre','c.nombres','c.apellidos','a.created_at')
+        ->join('productos as b','b.id','a.id_producto')
+        ->join('pacientes as c','c.id','a.paciente')
+        ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('Y-m-d 23:59:59', strtotime($request->fecha))])
+        ->orderby('a.id','desc')
+        ->get();
+
+        $totalventas = Creditos::where('origen','VENTA DE PRODUCTOS')
+                                    ->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($request->fecha)), date('                 Y-m-d 23:59:59', strtotime($request->fecha))])
+                                    ->where('id_sede','=', $request->session()->get('sede'))
+                                    ->select(DB::raw('SUM(monto) as monto'))
+                                    ->first();
+
+
     
     
      
         $hoy=$request->fecha;
        
-        $view = \View::make('reportes.detallado', compact('servicios', 'totalServicios','laboratorios', 'totalLaboratorios', 'consultas', 'totalconsultas','otrosingresos','totalotrosingresos','cuentasporcobrar','totalcuentasporcobrar','paquetes','totalPaquetes','metodos','totalmetodos','hoy'));
+        $view = \View::make('reportes.detallado', compact('servicios', 'totalServicios','laboratorios', 'totalLaboratorios', 'consultas', 'totalconsultas','otrosingresos','totalotrosingresos','cuentasporcobrar','totalcuentasporcobrar','paquetes','totalPaquetes','metodos','totalmetodos','ventas','totalventas','hoy'));
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -945,6 +960,7 @@ class ReportesController extends Controller
         return $pdf->stream('detallado'.$request->fecha.'.pdf');
 
     }
+
 
     private function elasticSearch($id){
         
