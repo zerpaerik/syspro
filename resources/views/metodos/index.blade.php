@@ -75,6 +75,7 @@
 							<th>Monto</th>
 							<th>Próxima Aplicación</th>
 							<th>Lo Aplicara</th>
+							<th>TipoIngreso</th>
 						    <th>Registrado Por:</th>
 							<th>Acciones</th>
 						</tr>
@@ -91,6 +92,7 @@
 								<td>{{$atec->monto}}</td>
 								<td style="background: #00FFFF;">{{$atec->proximo}}</td>
 								<td>{{$atec->personal}}</td>
+								<td>{{$atec->tipo_ingreso}}</td>
 								<td>{{$atec->name}},{{$atec->lastname}}</td>
 								<td>
 							    <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
