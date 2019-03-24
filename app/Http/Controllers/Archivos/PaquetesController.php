@@ -155,6 +155,7 @@ class PaquetesController extends Controller
     {
       $paquete = Paquetes::where('id',$id)
                           ->update([
+                              'detalle' => $request->detalle,
                               'precio' => $request->precio,
                               'porcentaje' => $request->porcentaje
                           ]);
