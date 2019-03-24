@@ -181,7 +181,7 @@ class AtencionesController extends Controller
               $paq->estatus = 1;
               $paq->usuario = Auth::user()->id;
               $paq->particular = $request->particular;
-                            $paq->ticket =AtencionesController::generarId($request);
+              $paq->ticket =AtencionesController::generarId($request);
               $paq->save(); 
 
               $creditos = new Creditos();
@@ -247,7 +247,8 @@ class AtencionesController extends Controller
               $s->estatus = 1;
               $s->particular = $request->particular;
               $s->usuario = Auth::user()->id;
-                            $s->ticket =AtencionesController::generarId($request);
+              $s->ticket =AtencionesController::generarId($request);
+              $s->paquete= $paq->id; 
               $s->save(); 
              
          }
@@ -284,8 +285,9 @@ class AtencionesController extends Controller
               $l->id_sede =$request->session()->get('sede');
               $l->estatus = 1;
               $l->particular = $request->particular;
-                            $l->usuario = Auth::user()->id;
-                                          $l->ticket =AtencionesController::generarId($request);
+              $l->usuario = Auth::user()->id;
+              $l->ticket =AtencionesController::generarId($request);
+              $l->paquete= $paq->id; 
               $l->save(); 
 
          }
@@ -614,8 +616,9 @@ class AtencionesController extends Controller
               $s->id_sede =$request->session()->get('sede');
               $s->estatus = 1;
               $s->particular = $request->particular;
-                            $s->usuario = Auth::user()->id;
-                                          $s->ticket =AtencionesController::generarId($request);
+              $s->usuario = Auth::user()->id;
+              $s->ticket =AtencionesController::generarId($request);
+             $s->paquete= $paq->id; 
               $s->save(); 
              
          }
@@ -653,7 +656,8 @@ class AtencionesController extends Controller
               $l->particular = $request->particular;
               $l->estatus = 1;
               $l->usuario = Auth::user()->id;
-                            $l->ticket =AtencionesController::generarId($request);
+              $l->ticket =AtencionesController::generarId($request);
+              $l->paquete= $paq->id; 
               $l->save(); 
 
          }
@@ -1073,6 +1077,9 @@ $paciente = DB::table('pacientes')
    public function delete($id){
     $atenciones = Atenciones::find($id);
     $atenciones->delete();
+    
+     $atenciones2 = Atenciones::where('paquete','=',$id);
+    $atenciones2->delete();
 	
 	$creditos = Creditos::where('id_atencion','=',$id);
     $creditos->delete();
