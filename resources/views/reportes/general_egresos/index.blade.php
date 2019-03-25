@@ -74,6 +74,7 @@
 							<th>Monto</th>
 							<th>Fecha</th>
 						    <th>Registrado Por:</th>
+						    <th>Recibido Por:</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -85,6 +86,7 @@
 								<td>{{$atec->monto}}</td>
 								<td>{{$atec->created_at}}</td>
 								<td>{{$atec->name}},{{$atec->lastname}}</td>
+								<td>{{$atec->nombre}}</td>
 							</tr>
 						@endforeach
 					</tbody>
@@ -94,6 +96,7 @@
 							<th>Monto</th>
 							<th>Fecha</th>
 						    <th>Registrado Por:</th>
+						    <th>Recibido Por:</th>>
 						
 					</tfoot>
 

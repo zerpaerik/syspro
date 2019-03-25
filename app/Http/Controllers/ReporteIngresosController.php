@@ -98,7 +98,7 @@ class ReporteIngresosController extends Controller
 
 
         $atenciones = DB::table('debitos as a')
-        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at','a.usuario','u.name','u.lastname')
+        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at','a.usuario','u.name','u.lastname','a.nombre')
         ->join('users as u','u.id','a.usuario')
         ->where('id_sede','=', $request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
@@ -118,7 +118,7 @@ class ReporteIngresosController extends Controller
 
 
         $atenciones = DB::table('debitos as a')
-        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at','usuario','u.name','u.lastname')
+        ->select('a.id','a.nombre','a.descripcion','a.monto','a.origen','a.created_at','usuario','u.name','u.lastname')
         ->join('users as u','u.id','a.usuario')
         ->where('id_sede','=', $request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
