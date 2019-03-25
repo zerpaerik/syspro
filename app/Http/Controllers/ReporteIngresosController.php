@@ -98,7 +98,8 @@ class ReporteIngresosController extends Controller
 
 
         $atenciones = DB::table('debitos as a')
-        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at')
+        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at','a.usuario','u.name','u.lastname')
+        ->join('users as u','u.id','a.usuario')
         ->where('id_sede','=', $request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
@@ -117,7 +118,8 @@ class ReporteIngresosController extends Controller
 
 
         $atenciones = DB::table('debitos as a')
-        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at')
+        ->select('a.id','a.descripcion','a.monto','a.origen','a.created_at','usuario','u.name','u.lastname')
+        ->join('users as u','u.id','a.usuario')
         ->where('id_sede','=', $request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
         ->whereDate('a.created_at', '=',Carbon::today()->toDateString())

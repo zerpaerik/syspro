@@ -73,6 +73,7 @@
 							<th>Origen</th>
 							<th>Monto</th>
 							<th>Fecha</th>
+						    <th>Registrado Por:</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -83,14 +84,16 @@
 								<td>{{$atec->origen}}</td>
 								<td>{{$atec->monto}}</td>
 								<td>{{$atec->created_at}}</td>
+								<td>{{$atec->name}},{{$atec->lastname}}</td>
 							</tr>
 						@endforeach
 					</tbody>
 					<tfoot>
-						   <th>Descripciòn</th>
+						    <th>Descripciòn</th>
 							<th>Origen</th>
 							<th>Monto</th>
 							<th>Fecha</th>
+						    <th>Registrado Por:</th>
 						
 					</tfoot>
 
