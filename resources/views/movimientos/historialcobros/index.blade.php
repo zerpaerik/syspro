@@ -92,7 +92,7 @@
 
 								</td>
 								<td>
-										@if(\Auth::user()->role_id = 5)							 
+									@if(\Auth::user()->role_id == 5)							 
 									<a class="btn btn-danger" href="historialcobros-delete-{{$atec->id_atencion}}"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>	
 
 									@endif
