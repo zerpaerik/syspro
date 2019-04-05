@@ -62,31 +62,31 @@ margin-top: -20px;
 <body>
 
 
-    <div class="" style="font-size: 40px; text-align: center; margin-bottom:-30px;">
+    <div class="" style="font-size: 40px; text-align: center; margin-bottom:-50px;">
 		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
 	    <p><strong>TICKET:0000{{ $paciente->EventId}}</strong></p>
 	</div>
 
-    <div class="" style="font-size: 40px; text-align: left; margin-bottom:-30px;">
+    <div class="" style="font-size: 40px; text-align: left; margin-bottom:-50px;">
 		<p><strong>FECHA:{{ $paciente->created_at}}</strong></p>
 	</div>
 
-	<div class="" style="font-size: 40px; text-align: left; margin-bottom:-30px;">
+	<div class="" style="font-size: 40px; text-align: left; margin-bottom:-50px;">
 		<p><strong>PACIENTE:{{ $paciente->nombres}},{{ $paciente->apellidos}}</strong></p>
 	</div>
 
 	
-	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-30px;">
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-50px;">
 		<p><strong>ESPECIALISTA:{{ $paciente->nombrePro}} {{ $paciente->apellidoPro}}
 		</strong></p>
 	</div>
 
-	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-30px;">
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-50px;">
 		<p><strong>TIPO DE CONSULTA:{{ $paciente->tipo}}
 		</strong></p>
 	</div>
 
-	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-30px;">
+	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-50px;">
 		<p><strong>TIPO DE INGRESO:{{ $paciente->tipo_ingreso}}
 		</strong></p>
 	</div>
