@@ -27,7 +27,7 @@ class AnalisisController extends Controller
         return view('generics.index', [
         "icon" => "fa-list-alt",
         "model" => "analisis",
-        "headers" => ["Nombre", "Precio al Pùblico", "Costo", "Tiempo", "Material","Laboratorio","Registrado Por:", "Editar", "Eliminar"],
+        "headers" => ["Nombre", "Precio al Pùblico", "Costo", "Tiempo", "Material","Laboratorio","Registrado Por:"],
         "data" => $analisis,
         "fields" => [ "name", "preciopublico", "costlab", "tiempo", "material","laboratorio","user"],
           "actions" => [
