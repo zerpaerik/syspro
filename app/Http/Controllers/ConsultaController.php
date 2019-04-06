@@ -60,23 +60,47 @@ class ConsultaController extends Controller
 
 
   
-     public function indexh(){
+     public function indexh(Request $request){
 
+
+      if(!is_null($request->paciente)){
+
+        $historias = DB::table('events as e')
+          ->select('e.id','e.paciente','e.title','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.dni','p.apellidos','p.id as pacienteId',
+      'a.pa','a.id as consultaid','a.pulso','a.temperatura','a.peso','a.fur','a.MAC','a.motivo_consulta','a.evolucion_enfermedad','a.examen_fisico_regional','a.presuncion_diagnostica','a.diagnostico_final','a.CIEX','a.CIEX2','a.examen_auxiliar','a.plan_tratamiento','a.observaciones','a.paciente_id','a.profesional_id','a.created_at','a.prox','a.personal','a.apetito','a.sed','a.orina','a.card','a.animo','a.deposiciones','a.g','a.p','a.pap',
+      'b.antecedentes_familiar','b.antecedentes_personales','b.antecedentes_patologicos','b.alergias','b.menarquia','b.prs','b.paciente_id')
+      ->join('consultas as a','a.paciente_id','e.paciente')
+      ->join('historials as b','e.paciente','b.paciente_id')
+      ->join('pacientes as p','p.id','=','e.paciente')
+      ->where('e.paciente','=',$request->paciente)
+      ->orderby('a.id','desc')
+      ->get();
+
+    } else {
 
       $historias = DB::table('events as e')
-        ->select('e.id','e.paciente','e.title','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.dni','p.apellidos','p.id as pacienteId',
-    'per.name as nombrePro','per.lastname as apellidoPro','per.id as profesionalId','rg.start_time','rg.end_time','rg.id',
-    'a.pa','a.id as consultaid','a.pulso','a.temperatura','a.peso','a.fur','a.MAC','a.motivo_consulta','a.evolucion_enfermedad','a.examen_fisico_regional','a.presuncion_diagnostica','a.diagnostico_final','a.CIEX','a.CIEX2','a.examen_auxiliar','a.plan_tratamiento','a.observaciones','a.paciente_id','a.profesional_id','a.created_at','a.prox','a.personal','a.apetito','a.sed','a.orina','a.card','a.animo','a.deposiciones','a.g','a.p','a.pap',
-    'b.antecedentes_familiar','b.antecedentes_personales','b.antecedentes_patologicos','b.alergias','b.menarquia','b.prs','b.paciente_id')
-    ->join('consultas as a','a.paciente_id','e.paciente')
-    ->join('historials as b','e.paciente','b.paciente_id')
-    ->join('pacientes as p','p.id','=','e.paciente')
-    ->join('personals as per','per.id','=','e.profesional')
-    ->join('rangoconsultas as rg','rg.id','=','e.time')
+          ->select('e.id','e.paciente','e.title','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.dni','p.apellidos','p.id as pacienteId',
+      'a.pa','a.id as consultaid','a.pulso','a.temperatura','a.peso','a.fur','a.MAC','a.motivo_consulta','a.evolucion_enfermedad','a.examen_fisico_regional','a.presuncion_diagnostica','a.diagnostico_final','a.CIEX','a.CIEX2','a.examen_auxiliar','a.plan_tratamiento','a.observaciones','a.paciente_id','a.profesional_id','a.created_at','a.prox','a.personal','a.apetito','a.sed','a.orina','a.card','a.animo','a.deposiciones','a.g','a.p','a.pap',
+      'b.antecedentes_familiar','b.antecedentes_personales','b.antecedentes_patologicos','b.alergias','b.menarquia','b.prs','b.paciente_id')
+      ->join('consultas as a','a.paciente_id','e.paciente')
+      ->join('historials as b','e.paciente','b.paciente_id')
+      ->join('pacientes as p','p.id','=','e.paciente')
+      ->where('e.paciente','=',$request->paciente)
+      ->orderby('a.id','desc')
+      ->get();
+
+
+
+    }
+
+
+    $pacientes = DB::table('pacientes as a')
+    ->select('a.id','a.nombres','a.apellidos','a.dni','b.id_paciente')
+    ->join('atenciones as b','b.id_paciente','a.id')
+    ->groupBy('a.id')
     ->get();
-    
-   
-        return view('consultas.historias.index', ["historias" => $historias]);
+
+    return view('consultas.historias.index', ['historias' => $historias, 'pacientes' => $pacientes]);
 	}
 
 
@@ -206,12 +230,14 @@ class ConsultaController extends Controller
     $historial = Historial::where('paciente_id','=',$consultas->paciente_id)->first();
     $data= Paciente::where('id','=',$consultas->paciente_id)->first();
     $personal = Personal::where('estatus','=',1)->get();
-    return view('consultas.historias.show',[
-      'historial' => $historial,
-      'consulta' => $consultas,
-      'personal' => $personal,
-      'data' => $data
-    ]);
+
+
+    $edad = Carbon::parse($historial->fechanac)->age;
+ 
+    $view = \View::make('consultas.historias.reporte')->with('consulta', $consultas)->with('historial', $historial)->with('data', $data);
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('historia_pdf');
   }
 
 

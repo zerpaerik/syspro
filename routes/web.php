@@ -458,10 +458,10 @@ Route::get('proximacita-search', 'ConsultaController@search')->name('proximacita
 Route::get('historias', 'ConsultaController@indexh')->name('historias.index')->middleware('auth');
 Route::get('historias-search', 'ConsultaController@searchh')->name('historias.search')->middleware('auth');
 Route::get('historias-{id}','ConsultaController@show');
-Route::get('historias-report-{id}','ConsultaController@report');
-
 Route::get('historiasp', 'ConsultaController@indexp')->name('historias.indexp')->middleware('auth');
 Route::get('historiasp-edit-{id}','ConsultaController@editview')->name('historiasp.edit')->middleware('auth');
+
+Route::get('historiasr-{id}', 'ConsultaController@report');
 
 
 
