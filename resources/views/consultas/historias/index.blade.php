@@ -44,7 +44,8 @@
 								<td>{{$h->dni}}</td>
 								<td>{{$h->created_at}}</td>
 								<td>
-								<a  class="btn btn-success" href="historias-{{$h->paciente}}">Ver Historia</a>	
+								<a  class="btn btn-success" href="historias-{{$h->consultaid}}">Ver Historia</a>
+								<a  class="btn btn-danger" href="historias-report-{{$h->consultaid}}">Ver Reporte</a>	
 								</td>
 							</tr>
 						@endforeach
