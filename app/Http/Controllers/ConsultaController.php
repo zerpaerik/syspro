@@ -74,6 +74,7 @@ class ConsultaController extends Controller
       ->join('pacientes as p','p.id','=','e.paciente')
       ->where('e.paciente','=',$request->paciente)
       ->orderby('a.id','desc')
+      ->groupBy('a.id')
       ->get();
 
     } else {
@@ -87,6 +88,7 @@ class ConsultaController extends Controller
       ->join('pacientes as p','p.id','=','e.paciente')
       ->where('e.paciente','=',$request->paciente)
       ->orderby('a.id','desc')
+            ->groupBy('a.id')
       ->get();
 
 
