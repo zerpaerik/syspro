@@ -6,7 +6,8 @@
 </head>
 <body>
 
-	 <img src="/var/www/html/syspro/public/img/logo2.jpg"  style="width: 20%;"/>
+    <img src="{{url('img/logo.jpg')}}" style="width: 20%;">
+
 	<br><br>
 	<CENTER><p><strong>HISTORIA CLÍNICA</strong></p></CENTER>
 <br>
