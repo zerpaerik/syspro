@@ -129,9 +129,15 @@
     </div>
     <!--Start Content-->
     <div id="content" class="col-xs-12 col-sm-10">
-      <div class="preloader">
-        <img src="{{url('img/devoops_getdata.gif')}}" class="devoops-getdata" alt="preloader"/>
+    <div class="container-fluid">
+      <div id="page-login" class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-4">  
+          <div class="text-center">
+            <img src="{{url('img/logo.jpg')}}" style="margin-top: 130px; margin-left: -65px; width: 100%; height: 150%;">
+          </div>
+        </div>
       </div>
+    </div>
       <div id="app">
         @yield('content')
       </div>      
