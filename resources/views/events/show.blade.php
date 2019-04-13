@@ -4,7 +4,6 @@
 	<p>Paciente: {{$data->nombres}} {{$data->apellidos}} </p>
 	<p>Doctor: {{$data->nombrePro}} {{$data->apellidoPro}}</p>
 	<p>Fecha de cita: {{$data->date}}</p>
-	<p>Hora: {{$data->start_time}} Hasta las {{$data->end_time}}</p>
 	<br>
 
 	<h2>Datos del paciente</h2>
@@ -299,7 +298,7 @@
 
 			<label for="" class="col-sm-2 control-label">PAP:</label>
 			<div class="col-sm-4">	
-				<input   class="form-control" type="date" name="pap">
+				<input   class="form-control" type="text" name="pap">
 			</div>
 
 			<label for="" class="col-sm-2 control-label">MAC:</label>
