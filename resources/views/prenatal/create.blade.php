@@ -69,15 +69,25 @@
     	</div>
 
     	<div class="col-md-3">
-    		    		<strong>Talla:</strong>{{ $prenatal->talla_pregestacional }} Cms
+    		<strong>Talla:</strong>{{ $prenatal->talla_pregestacional }} Cms
 
-    	</div>
-    	<div class="col-md-3">
-    		   <strong>Conclusiòn:</strong>{{ $prenatal->conclusion }}
     	</div>
 
     	<div class="col-md-3">
-    		   <strong>IMC:</strong>{{ $prenatal->imc }}
+    		<strong>IMC:</strong>{{ $prenatal->imc }}
+    	</div>
+
+    	<div class="col-md-3">
+	    	<strong>Conclusiòn:</strong>
+	    	@if($prenatal->imc <= 24)
+	    	<strong>Normal</strong>
+	    	@elseif($prenatal->imc <=29)
+	    	<strong>Sobrepeso</strong>
+	    	@elseif($prenatal->imc <=34)
+	    	<strong>Obesidad I</strong>
+	    	@elseif($prenatal->imc >= 35)
+	    	<strong>Obesidad II</strong>
+	    	@endif
     	</div>
     	
     </div>
@@ -355,19 +365,6 @@
 						<label for="">Talla (Cm)</label>
 						<input type="text" name="talla_pregestacional">
 						</div>
-
-						<div class="col-md-4">
-						<label for="">Conclusiòn</label>
-						<select id="el12" name="conclusion" style="width: 200px;">
-							<option value="0">Seleccione</option>
-							<option value="Normal(18-24)">Normal(18-24)</option>
-							<option value="Sobrepeso(25-29)">Sobrepeso(25-29)</option>
-							<option value="ObesidadI(30-34)">ObesidadI(30-34)</option>
-							<option value="ObesidadII(35-39)">ObesidadII(35-39)</option>
-
-						</select>
-						</div>
-
 						</div>
 						<br>
 
