@@ -165,6 +165,9 @@ Route::get('metodos-delete-{id}','MetodosController@delete');
 Route::get('metodos-llamar-{id}','MetodosController@llamar');
 Route::get('metodos-ticket-ver-{id}','MetodosController@ticket_ver');
 
+Route::get('antf/otro','PrenatalController@atf');
+Route::get('antp/otro','PrenatalController@atp');
+
 
 /**
  * Atenciones
