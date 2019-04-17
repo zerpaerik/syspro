@@ -92,13 +92,16 @@
 						<td>
 
 
-
                         @if($d->tipo == 'CONSULTAS')
 
 						<a class="btn btn-danger" href="event-{{$d->EventId}}">Cargar Historia</a>
+
+						<a _blank" class="btn btn-danger" href="prenatal-eliminar-{{$d->paciente}}" onclick="return confirm('¿Desea Finalizar el Historial Base?')">Finalizar</a>
 						@else
 
 						<a class="btn btn-danger" href="prenatal-create-{{$d->paciente}}-{{$d->EventId}}">Cargar Control</a>
+
+						<a _blank" class="btn btn-danger" href="prenatal-eliminar2-{{$d->paciente}}" onclick="return confirm('¿Desea Finalizar el Historial Base?')">Finalizar</a>
 						@endif
 
 						<a target="_blank" class="btn btn-primary" href="consulta-ticket-ver-{{$d->EventId}}">Ticket</a>
@@ -108,7 +111,6 @@
 
 						<a _blank" class="btn btn-warning" href="consulta-delete-{{$d->EventId}}" onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
 
-						<a _blank" class="btn btn-danger" href="prenatal-eliminar-{{$d->paciente}}" onclick="return confirm('¿Desea Finalizar?')">Finalizar</a>	
 						@endif
 							
 

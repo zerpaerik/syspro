@@ -154,6 +154,8 @@ Route::get('prenatal-imprimir-{id}', 'PrenatalController@imprimir');
 
 Route::get('prenatal-eliminar-{id}', 'PrenatalController@deletebase');
 
+Route::get('prenatal-eliminar2-{id}', 'PrenatalController@deletebase2');
+
 Route::get('metodos', 'MetodosController@index')->name('metodos.index')->middleware('auth');
 Route::get('metodos1', 'MetodosController@index1')->name('metodos.index1')->middleware('auth');
 Route::get('metodos-create', 'MetodosController@createView')->name('metodos.create')->middleware('auth');
