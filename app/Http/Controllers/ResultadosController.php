@@ -13,6 +13,7 @@ use App\Models\ResultadosLaboratorios;
 use App\Models\ResultadosMateriales;
 use App\Models\Existencias\Producto;
 use App\Informe;
+use App\User;
 use Auth;
 use Toastr;
 use Carbon\Carbon;
