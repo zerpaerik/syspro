@@ -40,6 +40,7 @@ class ResultadosGuardadosController extends Controller
 
 
 
+
       } else {
 
          $resultadosguardados = DB::table('atenciones as a')
@@ -49,7 +50,7 @@ class ResultadosGuardadosController extends Controller
         ->join('analises as d','d.id','a.id_laboratorio')
         ->join('users as e','e.id','a.origen_usuario')
         ->join('resultados_servicios as r','a.id','r.id_atencion')
-        ->where('a.es_servicio','=',999999)
+        ->where('a.es_servicio','=',1)
         ->where('a.id_sede','=', \Session::get("sede"))
         ->where('a.resultado','=', 1)
         ->orderby('a.id','desc')

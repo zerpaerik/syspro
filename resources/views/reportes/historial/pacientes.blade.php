@@ -47,7 +47,6 @@
 
 				</div>
 			</div>	
-
             <span><strong>ATENCIONES</strong></span>
 			<div class="box-content no-padding">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
@@ -57,11 +56,9 @@
 							<th>Paciente</th>
 							<th>Origen</th>
 							<th>Detalle</th>
-							<th>Monto</th>
-							<th>Monto Abonado</th>
 							<th>Fecha</th>
-							<th>TP</th>
 							<th>Registrado Por:</th>
+							<th>Adjuntado Por:</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -77,51 +74,59 @@
 						@else
 						<td>{{$d->paquete}}</td>
 						@endif
-						<td>{{$d->monto}}</td>
-						<td>{{$d->abono}}</td>
+						
 						<td>{{date('d-m-Y H:i', strtotime($d->created_at))}}</td>
-						<td>{{$d->tipo_ingreso}}</td>
 						<td>{{$d->user}},{{$d->userp}}</td>
+						@if($d->usuarioinforme <> NULL)
+						<td>{{$d->usuarioinforme}}</td>
+						@else
+						<td style="background: #82FA58;">No se ha adjuntado informe</td>
+						@endif
+
 					</tr>
 						@endforeach
+						
                       
 					</tbody>
 					<tfoot>
-						   <th>Id</th>
+						    <th>Id</th>
 							<th>Paciente</th>
 							<th>Origen</th>
 							<th>Detalle</th>
-							<th>Monto</th>
-							<th>Monto Abonado</th>
 							<th>Fecha</th>
-							<th>TP</th>
 							<th>Registrado Por:</th>
+							<th>Adjuntado Por:</th>
 					</tfoot>
 				</table>
 			</div>
+		
 		       <span><strong>CONSULTAS</strong></span>
 				<div class="box-content no-padding">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
+					@foreach($event as $d)
 					<thead>
 						<tr>
 							<th>Paciente</th>
 							<th>Especialista</th>
 							<th>Monto</th>
 							<th>Fecha</th>
-							<th>Horas</th>
+							@if($d->atendido == 1)
 							<th>Estatus</th>
+							<th>Atendido Por:</th>
+							@else
+						    <th>Estatus</th>
+							@endif
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($event as $d)
 						<tr>
 						<td>{{$d->apellidos}} {{$d->nombres}}</td>
 						<td>{{$d->nombrePro}} {{$d->apellidoPro}}</td>
 						<td>{{$d->monto}}</td>
 						<td>{{$d->date}}</td>
-						<td>{{$d->start_time}}-{{$d->end_time}}</td>
 						@if($d->atendido == 1)
 						<td style="background: #82FA58;">Fue Atendido</td>
+						<td>{{$d->nomate}} {{$d->apeate}}</td>
 						@else
 						<td style="background: #FE642E;">No ha sido Atendido</td>
 						@endif
@@ -140,6 +145,7 @@
 					</tfoot>
 				</table>
 			</div>
+
 			 <span><strong>MÉTODOS ANTICONCEPTIVOS</strong></span>
 				<div class="box-content no-padding">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
@@ -151,6 +157,7 @@
 							<th>Teléfono</th>
 							<th>Método</th>
 							<th>Monto</th>
+							<th>Aplicado Por</th>
 							<th>Próxima Aplicación</th>
 						    <th>Registrado Por:</th>
 						</tr>
@@ -165,6 +172,7 @@
 								<td>{{$atec->telefono}}</td>
 								<td>{{$atec->producto}}</td>
 								<td>{{$atec->monto}}</td>
+								<td>{{$atec->personal}}</td>
 								<td style="background: #00FFFF;">{{$atec->proximo}}</td>
 								<td>{{$atec->name}},{{$atec->lastname}}</td>
 							</tr>
@@ -172,12 +180,13 @@
                       
 					</tbody>
 					<tfoot>
-						   	<th>Fecha de Registro</th>
+						   	   <th>Fecha de Registro</th>
 							<th>Paciente</th>
 							<th>DNI</th>
 							<th>Teléfono</th>
 							<th>Método</th>
 							<th>Monto</th>
+							<th>Aplicado Por</th>
 							<th>Próxima Aplicación</th>
 						    <th>Registrado Por:</th>
 					</tfoot>

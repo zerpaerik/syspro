@@ -309,14 +309,16 @@ class ResultadosController extends Controller
 
     }
 	
-	 public function edit1($id,Request $request){
+	public function edit1($id,Request $request){
+
+  
 
      $searchAtenciones = DB::table('atenciones')
                     ->select('*')
                    // ->where('estatus','=','1')
                     ->where('id','=', $request->id)
                     ->get();
-		
+    
             foreach ($searchAtenciones as $atenciones) {
                     $es_servicio = $atenciones->es_servicio;
                     $es_laboratorio = $atenciones->es_laboratorio;
@@ -327,7 +329,6 @@ class ResultadosController extends Controller
 
          $searchAtencionesServicios = DB::table('atenciones')
          ->select('*')
-                   // ->where('estatus','=','1')
          ->where('id','=', $request->id)
          ->get();
 
@@ -373,9 +374,16 @@ class ResultadosController extends Controller
 
 
 
-                  $p = Atenciones::findOrFail($id);
-                  $p->resultado = 1;  
-                  $p->save();   
+
+
+
+        $p = User::where('id','=',Auth::user()->id)->first();
+
+          $pa = Atenciones::findOrFail($id);
+        $pa->resultado = 1;  
+        $pa->usuarioinforme=$p->name.' '.$p->lastname;
+        $pa->save(); 
+
 
 
                   $product=new ResultadosServicios;
@@ -393,11 +401,18 @@ class ResultadosController extends Controller
 
                } else {
 
-               
+                     //  dd('hola');
 
-                $p = Atenciones::findOrFail($id);
-          $p->resultado = 1;  
-          $p->save();   
+
+               
+        $p = User::where('id','=',Auth::user()->id)->first();
+
+        //dd($p);
+
+        $pa = Atenciones::findOrFail($id);
+        $pa->resultado = 1;  
+        $pa->usuarioinforme=$p->name.' '.$p->lastname;
+        $pa->save(); 
 
 
           $product=new ResultadosServicios;
@@ -440,8 +455,85 @@ class ResultadosController extends Controller
 
                }
 
-         ///PARA MATERIALES
+         ///PARA MATERIALES MALOGRADOS
+      if (isset($request->materialm)) {
+
+              if (!is_null($request->materialm)) {
+        foreach ($request->materialm['servicios'] as $key => $servicio) {
+          if (!is_null($servicio['servicio'])) {
+
+
+            $pro = new MaterialesMalogrados();
+            $pro->id_resultado = $product->id;
+            $pro->id_producto =  $servicio['servicio'];
+            $pro->cantidad = $request->monto_abos['servicios'][$key]['abono'];
+            $pro->usuario = Auth::user()->id;
+            $pro->save();
+
+            $SearchMaterial = Producto::where('id', $servicio['servicio'])
+            ->first();
+            if($SearchMaterial){
+            $cantactual= $SearchMaterial->cantidad;
+
+            $p = Producto::find($servicio['servicio']);
+            $p->cantidad = $cantactual - $request->monto_abos['servicios'][$key]['abono'];
+            $res = $p->save();
+            
+            }else{
+              $cantactual=0;
+            }
+
+         
+
+          } 
+        }
         
+      }
+
+    }
+
+      // PARA MATERIALES USADOS
+      if (isset($request->material)) {
+
+
+          if (!is_null($request->material)) {
+        foreach ($request->material['laboratorios'] as $key => $laboratorio) {
+          if (!is_null($laboratorio['laboratorio'])) {
+            $pro = new ResultadosMateriales();
+            $pro->id_resultado = $product->id;
+            $pro->id_material =  $laboratorio['laboratorio'];
+            $pro->cantidad = $request->monto_abol['laboratorios'][$key]['abono'];
+            $pro->save();
+
+
+            
+            $SearchMaterial = Producto::where('id', $laboratorio['laboratorio'])
+            ->first();
+            $cantactual= $SearchMaterial->cantidad;
+
+             if($SearchMaterial){
+            $cantactual= $SearchMaterial->cantidad;
+
+            
+            $p = Producto::find($laboratorio['laboratorio']);
+            $p->cantidad = $cantactual - $request->monto_abol['laboratorios'][$key]['abono'];
+            $res = $p->save();
+
+
+            }else{
+              $cantactual=0;
+            }
+
+
+
+          } 
+        }
+      }
+
+        }
+
+
+        ///
       }
 
      
@@ -462,11 +554,12 @@ class ResultadosController extends Controller
         }
 
        
+        $p = User::where('id','=',Auth::user()->id)->first();
 
-
-          $p = Atenciones::findOrFail($id);
-        $p->resultado = 1;  
-        $p->save();   
+          $pa = Atenciones::findOrFail($id);
+        $pa->resultado = 1;  
+        $pa->usuarioinforme=$p->name.' '.$p->lastname;
+        $pa->save();   
         
         $product=new ResultadosLaboratorios;
         $img = $request->file('informe');
@@ -507,6 +600,8 @@ class ResultadosController extends Controller
           } 
         }
       }
+
+    
 
 
            }

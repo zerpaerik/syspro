@@ -74,8 +74,7 @@
 							<th>Método</th>
 							<th>Monto</th>
 							<th>Próxima Aplicación</th>
-							<th>Lo Aplicara</th>
-							<th>TipoIngreso</th>
+							<th>Aplicado Por:</th>
 						    <th>Registrado Por:</th>
 							<th>Acciones</th>
 						</tr>
@@ -92,13 +91,34 @@
 								<td>{{$atec->monto}}</td>
 								<td style="background: #00FFFF;">{{$atec->proximo}}</td>
 								<td>{{$atec->personal}}</td>
-								<td>{{$atec->tipo_ingreso}}</td>
 								<td>{{$atec->name}},{{$atec->lastname}}</td>
 								<td>
+
+								@if(\Auth::user()->role_id == 6)
+
 							    <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
-							   @if(\Auth::user()->role_id <> 6 && \Auth::user()->role_id <> 7)						
-							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">Editar</a>
+							    @endif
+							   
+							    @if(\Auth::user()->role_id == 5)
 							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
+							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">Editar</a>
+							      <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
+							     @if($atec->aplicado == 0)
+							    <a href="aplimetodo-{{$atec->id}}" class="btn btn-danger">Aplicar</a>
+							    @endif
+							    @endif
+							    @if(\Auth::user()->role_id == 4)
+							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
+							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">Editar</a>
+							      <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
+							     @if($atec->aplicado == 0)
+							    <a href="aplimetodo-{{$atec->id}}" class="btn btn-danger">Aplicar</a>
+							    @endif
+							    @endif
+							    @if(\Auth::user()->role_id == 7)
+							      @if($atec->aplicado == 0)
+							    <a href="aplimetodo-{{$atec->id}}" class="btn btn-danger">Aplicar</a>
+							    @endif
 							    @endif
 								</td>
 							</tr>
@@ -113,6 +133,7 @@
 							<th>Método</th>
 							<th>Monto</th>
 							<th>Próxima Aplicación</th>
+							<th>Aplicado Por:</th>
 						    <th>Registrado Por:</th>
 							<th>Acciones</th>
 						  
