@@ -82,7 +82,7 @@ class ResultadosGuardadosController extends Controller
         ->join('servicios as c','c.id','a.id_servicio')
         ->join('analises as d','d.id','a.id_laboratorio')
         ->join('users as e','e.id','a.origen_usuario')
-        ->join('resultados_servicios as r','a.id','r.id_atencion')
+        ->join('resultados_laboratorios as r','a.id','r.id_atencion')
         ->where('a.id_paciente','=',$request->paciente)
         ->where('a.es_laboratorio','=',1)
         ->where('a.id_sede','=', \Session::get("sede"))
