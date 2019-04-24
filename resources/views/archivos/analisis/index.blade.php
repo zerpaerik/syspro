@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-</br>
+
+<body>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">
-					<i class="fa fa-users"></i>
-					<span><strong>Analisis de Laboratorio</strong></span>
-					<a href="{{route('analisis.create')}}" class="btn btn-primary">Agregar</a>
+					<i class="fa fa-linux"></i>
+					<span>Archivos/Analisis</span>
+					<a href="{{route('analisis.create')}}" class="btn btn-success">Agregar</a>
+
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -18,48 +20,80 @@
 					<a class="expand-link">
 						<i class="fa fa-expand"></i>
 					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
 				</div>
+
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content no-padding">
-			<div class="table-responsive">
-				<table class="table">
+				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
 					<thead>
 						<tr>
+							<th>Id</th>
 							<th>Nombre</th>
 							<th>Precio</th>
-							<th>Laboratorio</th>
+							<th>Costo</th>
 							<th>Tiempo</th>
 							<th>Material</th>
-							
+							<th>Laboratorio</th>
+							<th>Registrado Por:</th>
+							<th>Acciones:</th>
+
+
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($analisis as $ana)					
-							<tr>
-								<td>{{$ana->name}}</td>
-								<td>{{$ana->preciopublico}}</td>
-								<td>{{$ana->laboratorio}}</td>
-								<td>{{$ana->tiempo}}</td>
-								<td>{{$ana->material}}</td>
+					@foreach($analisis as $p)					
+						<tr>
+						<td>{{$p->id}}</td>
+						<td>{{$p->name}}</td>
+						<td>{{$p->preciopublico}}</td>
+						<td>{{$p->costlab}}</td>
+						<td>{{$p->tiempo}}</td>
+						<td>{{$p->material}}</td>
+						<td>{{$p->laboratorio}}</td>
+						<td>{{$p->user}} {{$p->lastname}}</td>
+						<td>
+						<a href="analisis-edit-{{$p->id}}" class="btn btn-primary">Editar</a>
+						<a href="analisis-delete-{{$p->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
+
+						</td>
+						</tr>
 						
-								<td><a href="analisis/{{$ana->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a></td>
-							</tr>
-						@endforeach
+				    @endforeach
 					</tbody>
 					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Precio</th>
+							<th>Costo</th>
+							<th>Tiempo</th>
+							<th>Material</th>
+							<th>Laboratorio</th>
+							<th>Registrado Por:</th>
+							<th>Acciones:</th>
+
+						</tr>
 					</tfoot>
 				</table>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-@if(isset($created))
-	<div class="alert alert-success" role="alert">
-	  A simple success alert—check it out!
-	</div>
-@endif
+
+</body>
+
+
+
+<script src="{{url('/tema/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{url('/tema/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
+
+
+
 <script type="text/javascript">
 // Run Datables plugin and create 3 variants of settings
 function AllTables(){
@@ -81,5 +115,4 @@ $(document).ready(function() {
 	WinMove();
 });
 </script>
-
 @endsection

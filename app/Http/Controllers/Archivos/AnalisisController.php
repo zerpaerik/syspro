@@ -23,18 +23,8 @@ class AnalisisController extends Controller
 		->join('users as c','c.id','a.usuario')
         ->orderby('a.id','desc')
         ->where('a.estatus','=', 1)
-        ->paginate(5000);     
-        return view('generics.index', [
-        "icon" => "fa-list-alt",
-        "model" => "analisis",
-        "headers" => ["Nombre", "Precio al Pùblico", "Costo", "Tiempo", "Material","Laboratorio","Registrado Por:","Acciones"],
-        "data" => $analisis,
-        "fields" => [ "name", "preciopublico", "costlab", "tiempo", "material","laboratorio","user"],
-          "actions" => [
-            '<button type="button" class="btn btn-info">Transferir</button>',
-            '<button type="button" class="btn btn-warning">Editar</button>'
-          ]
-      ]);  
+        ->get();     
+        return view('archivos.analisis.index', compact('analisis')); 
 	}
 
   public function search(Request $request)
