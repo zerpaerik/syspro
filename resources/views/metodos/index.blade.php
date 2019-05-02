@@ -73,9 +73,10 @@
 							<th>Teléfono</th>
 							<th>Método</th>
 							<th>Monto</th>
+							<th>TI</th>
 							<th>Próxima Aplicación</th>
 							<th>Aplicado Por:</th>
-						    <th>Registrado Por:</th>
+						    <th>RP:</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>
@@ -89,9 +90,10 @@
 								<td>{{$atec->telefono}}</td>
 								<td>{{$atec->producto}}</td>
 								<td>{{$atec->monto}}</td>
+							    <td>{{$atec->tipo_ingreso}}</td>
 								<td style="background: #00FFFF;">{{$atec->proximo}}</td>
 								<td>{{$atec->personal}}</td>
-								<td>{{$atec->name}},{{$atec->lastname}}</td>
+								<td>{{$atec->name}}</td>
 								<td>
 
 								@if(\Auth::user()->role_id == 6)
@@ -100,16 +102,16 @@
 							    @endif
 							   
 							    @if(\Auth::user()->role_id == 5)
-							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
-							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">Editar</a>
+							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">ELM</a>
+							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">EDT</a>
 							      <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
 							     @if($atec->aplicado == 0)
 							    <a href="aplimetodo-{{$atec->id}}" class="btn btn-danger">Aplicar</a>
 							    @endif
 							    @endif
 							    @if(\Auth::user()->role_id == 4)
-							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">Eliminar</a>
-							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">Editar</a>
+							    <a href="metodos-delete-{{$atec->id}}" class="btn btn-danger"  onclick="return confirm('¿Desea Eliminar este registro?')">ELM</a>
+							    <a href="metodos-edit-{{$atec->id}}" class="btn btn-primary">EDT</a>
 							      <a target="_blank" href="metodos-ticket-ver-{{$atec->id}}" class="btn btn-success">Ver Ticket</a>
 							     @if($atec->aplicado == 0)
 							    <a href="aplimetodo-{{$atec->id}}" class="btn btn-danger">Aplicar</a>
@@ -132,9 +134,10 @@
 							<th>Teléfono</th>
 							<th>Método</th>
 							<th>Monto</th>
+							<th>TI</th>
 							<th>Próxima Aplicación</th>
 							<th>Aplicado Por:</th>
-						    <th>Registrado Por:</th>
+						    <th>RP:</th>
 							<th>Acciones</th>
 						  
 
