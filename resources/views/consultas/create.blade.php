@@ -64,7 +64,7 @@
 
 							<label class="col-sm-1 control-label">TipoPago</label>
 							<div class="col-sm-3">
-								<select id="el3" name="tipopago">
+								<select id="el4" name="tipopago">
 										<option value="EF">EF</option>
 										<option value="TJ">TJ</option>
 								</select>
@@ -96,6 +96,7 @@ $(document).ready(function() {
 		$("#el2").select2();
 		$("#el1").select2();
 		$("#el3").select2({disabled : true});
+		$("#el4").select2();
 	});
 	WinMove();
 });
