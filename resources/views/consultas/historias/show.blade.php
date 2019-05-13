@@ -52,7 +52,7 @@
           <p class="col-sm-4"><strong>Sed:</strong> {{ $consulta->sed }}</p>
           <p class="col-sm-4"><strong>Animo:</strong> {{ $consulta->animo }}</p>
           <p class="col-sm-4"><strong>Frecuencia Micciones:</strong> {{ $consulta->orina }}c 24/hrs</p>
-          <p class="col-sm-4"><strong>Frecuencia Cardíaca:</strong> {{ $consulta->card }}x min</p>
+          <p class="col-sm-4"><strong>R/C:</strong> {{ $consulta->card }}x min</p>
           <p class="col-sm-4"><strong>Frecuencia Deposiciones:</strong> {{ $consulta->deposiciones }}c 24/hrs</p>
         </div>
         <div class="row">
