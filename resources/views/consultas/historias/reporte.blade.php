@@ -6,8 +6,7 @@
 </head>
 <body>
 
-	 <p><strong>MADRE TERESA -</strong> {{Session::get('sedeName')}}</p>
-	<br>
+	 <img src="/var/www/html/syspro/public/img/logo.jpg"  style="width: 20%;"/>
 	<CENTER><p><strong>HISTORIA CLÍNICA</strong></p></CENTER>
 <br>
 
