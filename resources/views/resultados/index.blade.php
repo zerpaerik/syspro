@@ -106,6 +106,17 @@
 								<form action="{{$model . '-asoc-' .$p->id}}" method="get">
 					     <select id="el2" name="informe">
 						<option value="">Seleccione</option>
+
+
+                                @if(Session::get('sedeName') == 'INDEPENDENCIA')
+            
+                                @else
+                                
+
+                                @endif
+
+
+
                                     <option value="ABDOMEN COLECISTITIS CRONICA FASE AGUDA.docx">ABDOMEN COLECISTITIS CRONICA FASE AGUDA</option>
                                     <option value="ABDOMEN COLECISTITIS CRONICA.docx">ABDOMEN COLECISTITIS CRONICA</option>
                                     <option value="ABDOMEN ESTEATOSIS LEVE, CCC.docx">ABDOMEN ESTEATOSIS LEVE, CCC</option>
