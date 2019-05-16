@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	 <img src="/var/www/html/syspro/public/img/logo.jpg"  style="width: 20%;"/>
+	 <img src="/var/www/html/syspro/public/img/logo.jpeg"  style="width: 20%;"/>
 	<CENTER><p><strong>HISTORIA CLÍNICA</strong></p></CENTER>
 <br>
 
