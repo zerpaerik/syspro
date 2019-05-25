@@ -76,9 +76,14 @@
 						<td>{{$d->created_at}}</td>
 						<td>
 							
-
+                        @if(\Auth::user()->role_id == 4)
 					     <a href="resultadosg-reversarl-{{$d->id}}-{{$d->id2}}" class="btn btn-danger">Reversar</a>
 					     <a class="btn btn-success" href="/resultadosg-editar-{{$d->id2}}">Actualizar Informe</a>
+					     @endif
+					      @if(\Auth::user()->role_id == 5)
+					     <a href="resultadosg-reversarl-{{$d->id}}-{{$d->id2}}" class="btn btn-danger">Reversar</a>
+					     <a class="btn btn-success" href="/resultadosg-editar-{{$d->id2}}">Actualizar Informe</a>
+					     @endif
 
 		
 						<a href="{{route('descargar2',$d->informe)}}" class="btn btn-primary" target="_blank">Ver Informe</a>
