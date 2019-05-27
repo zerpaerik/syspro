@@ -61,12 +61,22 @@ margin-top: -20px;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Ticket de Atenciòn</title>
+	<title>Ticket de Atención</title>
 </head>
 <body>
+	
+	<div class="" style="font-size: 35px; text-align: center; margin-bottom: -15px;">
+		<img src="/var/www/html/syspro/public/img/logo.jpeg"  style="width: 30%;"/>
+	</div>
 
  <div class="" style="font-size: 40px; text-align: center;margin-bottom:-60px;margin-top: 2px;">
 		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
+		<p><strong>RUC: 20601183961</strong></p>
+		@if(Session::get('sedeName') == 'INDEPENDENCIA')
+		<p><strong>Teléfono: 5265711</strong></p>
+		@else
+		<p><strong>Teléfono: 5390547</strong></p>
+		@endif
 	    <p><strong>TICKET:{{ $ticket->id}}</strong></p>
 	</div>
 

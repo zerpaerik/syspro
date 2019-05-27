@@ -6,9 +6,18 @@
 </head>
 <body>
      
+    <div class="" style="font-size: 35px; text-align: center; margin-bottom: -15px;">
+        <img src="/var/www/html/syspro/public/img/logo.jpeg"  style="width: 30%;"/>
+    </div>
 
-     <div class="" style="font-size: 40px; text-align: center;margin-bottom: -25px;">
-        <p><strong>MADRE TERESA</strong></p>
+    <div class="" style="font-size: 40px; text-align: center;margin-bottom: -25px;">
+        <p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
+        <p><strong>RUC: 20601183961</strong></p>
+        @if(Session::get('sedeName') == 'INDEPENDENCIA')
+        <p><strong>Teléfono: 5265711</strong></p>
+        @else
+        <p><strong>Teléfono: 5390547</strong></p>
+        @endif
     </div>
 
     <div class="" style="font-size: 40px; text-align: left;margin-bottom: -25px;">
