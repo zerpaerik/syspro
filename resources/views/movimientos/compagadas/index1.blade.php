@@ -58,9 +58,11 @@
 				<div class="col-md-2">
 				<strong>Monto Pagado:</strong>{{number_format($aten->monto, 2, ',', '.')}}
 			     </div>
+			     @if($sobres)
 			     <div class="col-md-2">
 				<strong>Total Sobres:</strong>{{$sobres->total}}
 			     </div>
+			     @endif
 			</div>	
 
 			<div class="row">
