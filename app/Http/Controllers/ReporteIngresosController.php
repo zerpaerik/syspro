@@ -25,20 +25,21 @@ class ReporteIngresosController extends Controller
 
 
        $atenciones = DB::table('atenciones as a')
-        ->select('a.id','a.id_paciente','a.created_at','a.origen_usuario','a.origen','a.porc_pagar','a.id_servicio','es_laboratorio','a.id_sede','a.pagado_com','a.id_laboratorio','a.pendiente','a.abono','a.es_servicio','a.es_laboratorio','a.monto','a.porcentaje','a.abono','b.nombres','b.apellidos','c.detalle as servicio','c.por_tec','e.name','e.lastname','d.name as laboratorio')
+        ->select('a.id','a.id_paciente','a.created_at','a.origen_usuario','a.origen','a.porc_pagar','a.id_servicio','a.id_paquete','es_laboratorio','a.id_sede','a.pagado_com','a.id_laboratorio','a.pendiente','a.abono','a.es_servicio','a.es_laboratorio','a.monto','a.porcentaje','a.abono','b.nombres','b.apellidos','c.detalle as servicio','c.por_tec','e.name','e.lastname','d.name as laboratorio','p.detalle as paquete')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->join('servicios as c','c.id','a.id_servicio')
         ->join('analises as d','d.id','a.id_laboratorio')
         ->join('users as e','e.id','a.origen_usuario')
+        ->join('paquetes as p','p.id','a.id_paquete')
         ->where('a.id_sede','=', $request->session()->get('sede'))
-        ->whereNotIn('a.monto',[0,0.00])
+        ->whereNotIn('a.monto',[0,0.00,99999])
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->orderby('a.id','desc')
-        ->paginate(20000000);
+        ->get();
 
 
          $aten = Atenciones::where('id_sede','=', $request->session()->get('sede'))
-                       ->whereNotIn('monto',[0,0.00])
+                       ->whereNotIn('monto',[0,0.00,99999])
                        ->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
                        ->select(DB::raw('SUM(abono) as monto'))
                        ->first();
@@ -51,20 +52,21 @@ class ReporteIngresosController extends Controller
       } else {
 
           $atenciones = DB::table('atenciones as a')
-        ->select('a.id','a.id_paciente','a.created_at','a.origen_usuario','a.origen','a.porc_pagar','a.id_servicio','es_laboratorio','a.id_sede','a.pagado_com','a.id_laboratorio','a.pendiente','a.abono','a.es_servicio','a.es_laboratorio','a.monto','a.porcentaje','a.abono','b.nombres','b.apellidos','c.detalle as servicio','c.por_tec','e.name','e.lastname','d.name as laboratorio')
+        ->select('a.id','a.id_paciente','a.created_at','a.origen_usuario','a.origen','a.porc_pagar','a.id_servicio','a.id_paquete','es_laboratorio','a.id_sede','a.pagado_com','a.id_laboratorio','a.pendiente','a.abono','a.es_servicio','a.es_laboratorio','a.monto','a.porcentaje','a.abono','b.nombres','b.apellidos','c.detalle as servicio','c.por_tec','e.name','e.lastname','d.name as laboratorio','p.detalle as paquete')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->join('servicios as c','c.id','a.id_servicio')
         ->join('analises as d','d.id','a.id_laboratorio')
         ->join('users as e','e.id','a.origen_usuario')
+        ->join('paquetes as p','p.id','a.id_paquete')
         ->where('a.id_sede','=', $request->session()->get('sede'))
-        ->whereNotIn('a.monto',[0,0.00])
+        ->whereNotIn('a.monto',[0,0.00,99999])
         ->whereDate('a.created_at', '=',Carbon::today()->toDateString())
         ->orderby('a.id','desc')
-        ->paginate(20000000);
+        ->get();
 
 
          $aten = Atenciones::where('id_sede','=', $request->session()->get('sede'))
-                       ->whereNotIn('monto',[0,0.00])
+                       ->whereNotIn('monto',[0,0.00,99999])
                         ->whereDate('created_at', '=',Carbon::today()->toDateString())
                        ->select(DB::raw('SUM(abono) as monto'))
                        ->first();
