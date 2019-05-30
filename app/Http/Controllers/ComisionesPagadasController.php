@@ -326,6 +326,7 @@ class ComisionesPagadasController extends Controller
                                     ->where('origen','=',2)
                                     ->select(DB::raw('COUNT(DISTINCT recibo) as total'))
                                     ->first();
+        dd($sobres->total);
         if ($sobres->total == 0) {
         }
 
