@@ -67,6 +67,12 @@ margin-top: -20px;
 
     <div class="" style="font-size: 40px; text-align: center; margin-bottom:-50px;">
 		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
+		<p><strong>RUC: 20601183961</strong></p>
+		@if(Session::get('sedeName') == 'INDEPENDENCIA')
+		<p><strong>Teléfono: 5265711</strong></p>
+		@else
+		<p><strong>Teléfono: 5390547</strong></p>
+		@endif
 	    <p><strong>TICKET:0000{{ $paciente->EventId}}</strong></p>
 	</div>
 
