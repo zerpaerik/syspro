@@ -769,7 +769,7 @@ class ReportesController extends Controller
       
        //$view = \View::make('reportes.cierre_caja_ver')->with('caja', $caja);
        $pdf = \App::make('dompdf.wrapper');
-       $pdf->setPaper('A5', 'landscape');
+      $pdf->setPaper(array(0,0,800.00,3000.00));
        $pdf->loadHTML($view);
        return $pdf->stream('recibo_gastos_ver');
     /* }else{
