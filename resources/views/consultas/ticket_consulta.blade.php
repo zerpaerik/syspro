@@ -60,7 +60,10 @@ margin-top: -20px;
 	<title>Ticket de Consultas</title>
 </head>
 <body>
-
+      
+      <div class="" style="font-size: 35px; text-align: center; margin-bottom: -15px;">
+		<img src="/var/www/html/syspro/public/img/image.png"  style="width: 30%;"/>
+	</div>
 
     <div class="" style="font-size: 40px; text-align: center; margin-bottom:-50px;">
 		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
