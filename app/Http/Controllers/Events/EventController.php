@@ -144,6 +144,7 @@ class EventController extends Controller
               'paciente' => $request->paciente,
               'date' => Carbon::createFromFormat('d/m/Y', $request->date),
               'time' => $request->time,
+              'tipo' => $request->tipo,
               'monto' => $request->monto
             ]);
 
