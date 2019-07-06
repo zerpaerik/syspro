@@ -36,6 +36,7 @@ class ResultadosGuardadosController extends Controller
         ->where('a.id_sede','=', \Session::get("sede"))
         ->where('a.resultado','=', 1)
         ->orderby('a.id','desc')
+        ->groupBy('a.id')
         ->get();
 
 
@@ -55,6 +56,7 @@ class ResultadosGuardadosController extends Controller
         ->where('a.resultado','=', 1)
         ->where('a.id_paciente','=',9999999999999999)
         ->orderby('a.id','desc')
+                ->groupBy('a.id')
         ->get();
 
       }
