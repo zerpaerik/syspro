@@ -142,7 +142,7 @@ class ResultadosController extends Controller
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->where('a.id_sede','=',$request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
-        ->where('a.resultado','=', NULL)
+        ->where('a.informe','=', NULL)
         ->where('c.detalle','like','%'.$request->name.'%')
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
@@ -163,7 +163,7 @@ class ResultadosController extends Controller
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->where('a.id_sede','=',$request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
-        ->where('a.resultado','=', NULL)
+        ->where('a.informe','=', NULL)
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
                 ->groupBy('a.id')
@@ -180,7 +180,7 @@ class ResultadosController extends Controller
                 ->where('a.es_servicio','=',1)
         ->where('a.id_sede','=',$request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
-        ->where('a.resultado','=', NULL)
+        ->where('a.informe','=', NULL)
         ->where('c.detalle','like','%'.$request->name.'%')
         ->whereDate('a.created_at', '=',Carbon::today()->toDateString())
         ->where('a.sesion','=',NULL)
@@ -201,11 +201,10 @@ class ResultadosController extends Controller
         ->whereDate('a.created_at', '=',Carbon::today()->toDateString())
         ->where('a.id_sede','=',$request->session()->get('sede'))
         ->whereNotIn('a.monto',[0,0.00])
-        ->where('a.resultado','=', NULL)
+        ->where('a.informe','=', NULL)
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
                 ->groupBy('a.id')
-
         ->get();
 
 
