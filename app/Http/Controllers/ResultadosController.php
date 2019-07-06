@@ -146,6 +146,7 @@ class ResultadosController extends Controller
         ->where('c.detalle','like','%'.$request->name.'%')
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
+        ->groupBy('a.id')
         ->get();
         
         } elseif(! is_null($request->fecha)){
@@ -165,6 +166,7 @@ class ResultadosController extends Controller
         ->where('a.resultado','=', NULL)
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
+                ->groupBy('a.id')
         ->get();
 
 
@@ -202,6 +204,8 @@ class ResultadosController extends Controller
         ->where('a.resultado','=', NULL)
         ->where('a.sesion','=',NULL)
         ->orderby('a.id','desc')
+                ->groupBy('a.id')
+
         ->get();
 
 
