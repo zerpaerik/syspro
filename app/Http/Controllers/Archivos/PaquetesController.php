@@ -145,21 +145,24 @@ class PaquetesController extends Controller
       $servicios = Servicios::all();
       $laboratorios = Analisis::all();
 
-      $consultasP = PaqueteCons::where('paquete_id',$id)->get();
-      $controlesP = PaqueteCont::where('paquete_id',$id)->get();
+      $consultasP = PaqueteCons::where('paquete_id',$id)->first();
+      $controlesP = PaqueteCont::where('paquete_id',$id)->first();
      
       return view('archivos.paquetes.edit', compact('paquete','serviciosP','laboratoriosP','servicios','laboratorios','consultasP','controlesP'));  
     }
 
-    public function update(Request $request, $id)
+   public function update(Request $request, $id)
     {
+
+      
+
+
       $paquete = Paquetes::where('id',$id)
                           ->update([
-                              'detalle' => $request->detalle,
                               'precio' => $request->precio,
                               'porcentaje' => $request->porcentaje
                           ]);
-      if ($paquete) {
+
         if (isset($request->id_servicio)) {
             foreach ($request->id_servicio['servicios'] as $servicio) {
               PaqueteServ::where('id', $servicio['id'])
@@ -177,22 +180,52 @@ class PaquetesController extends Controller
                           ]);
           }
         }
+
+
+
+
         if (isset($request->consultas)) {
-            PaqueteCons::where('paquete_id', $id)
+
+             $consul=PaqueteCons::where('paquete_id','=',$id)->first();
+
+             if($consul){
+          
+             PaqueteCons::where('paquete_id','=',$id)
                           ->update([
                               'cantidad' => $request->consultas
                           ]);
+              } else {
+
+              $consultas = new PaqueteCons;
+              $consultas->paquete_id     = $id;
+              $consultas->cantidad = $request->consultas;
+              $consultas->save();
+
+
+              }
          
         }
 
            if (isset($request->controles)) {
-            PaqueteCont::where('paquete_id', $id)
+
+             $cont=PaqueteCont::where('paquete_id','=',$id)->first();
+
+             if($cont){
+            PaqueteCont::where('paquete_id','=',$id)
                           ->update([
                               'cantidad' => $request->controles
                           ]);
+            }else{
+
+              $control = new PaqueteCont;
+              $control->paquete_id     = $id;
+              $control->cantidad = $request->controles;
+              $control->save();
+
+            }
          
         }
-      }
+ 
 
       return redirect()->route('paquetes.index');
     }

@@ -111,7 +111,6 @@
 				            <!-- /sheepIt Form --> 
 						</div>
 					</div>
-
 						<div class="form-group">
 						<div class="row">
 				            <label class="col-sm-12 alert"><i class="fa fa-tasks" aria-hidden="true"></i> Cantidad de Consultas</label>
@@ -119,11 +118,17 @@
 				            <div id="consultas" class="embed ">
 				                <!-- Form template-->
 				                <div id="consultas_template" class="template row">
-
+				                   @if($consultasP)
 				                    <label for="servicios_#index#_servicio" class="col-sm-1 control-label">Cantidad</label>
+				                    <div class="col-sm-3">
+				                      <input type="text"  class="form-control" name="consultas" value="{{$consultasP->cantidad}}" placeholder="Cantidad de Consultas" data-toggle="tooltip" data-placement="bottom" title="Nombres">
+				                    </div>
+				                    @else
+				                     <label for="servicios_#index#_servicio" class="col-sm-1 control-label">Cantidad</label>
 				                    <div class="col-sm-3">
 				                      <input type="text"  class="form-control" name="consultas" placeholder="Cantidad de Consultas" data-toggle="tooltip" data-placement="bottom" title="Nombres">
 				                    </div>
+				                    @endif
 				                 
 				                </div>
 				                <!-- /Form template-->
@@ -136,6 +141,7 @@
 				          </div>
 					</div>
 
+
 					<div class="form-group">
 						<div class="row">
 				            <label class="col-sm-12 alert"><i class="fa fa-tasks" aria-hidden="true"></i> Cantidad de Controles</label>
@@ -143,11 +149,17 @@
 				            <div id="controles" class="embed ">
 				                <!-- Form template-->
 				                <div id="controles_template" class="template row">
-
+                                  @if($controlesP)
 				                    <label for="servicios_#index#_servicio" class="col-sm-1 control-label">Cantidad</label>
 				                    <div class="col-sm-3">
-				                       <input type="text"  class="form-control" name="controles" placeholder="Cantidad de Controles" data-toggle="tooltip" data-placement="bottom" title="Nombres">
+				                       <input type="text"  class="form-control" name="controles" value="{{$controlesP->cantidad}}" placeholder="Cantidad de Controles" data-toggle="tooltip" data-placement="bottom" title="Nombres">
 				                    </div>
+				                    @else
+				                     <label for="servicios_#index#_servicio" class="col-sm-1 control-label">Cantidad</label>
+				                    <div class="col-sm-3">
+				                       <input type="text"  class="form-control" name="controles"  placeholder="Cantidad de Controles" data-toggle="tooltip" data-placement="bottom" title="Nombres">
+				                    </div>
+				                    @endif
 				                   				                </div>
 				                <!-- /Form template-->
 				                
