@@ -68,8 +68,7 @@ class HistorialCobrosController extends Controller
         return $atenciones;
   }
 
-
-  public function delete($id){
+ public function delete($id){
 
 
     $historiac = DB::table('historialcobros as a')
