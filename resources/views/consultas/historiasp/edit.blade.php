@@ -18,12 +18,7 @@
 				</select>
 			</div> 
 			</div>
-           <div class="row">
-            <label for="" class="col-sm-2 ">Motivo de Consulta:</label>
-			<div class="col-sm-10 control-label">	
-				<textarea name="motivo_consulta" cols="10" rows="4" class="form-control" readonly="">{{$historias->motivo_consulta}}</textarea>		
-			</div>
-		  </div>
+         
 
 		<div class="row">
 			<label for="" class="col-sm-2">Funciones Vitales:</label>
