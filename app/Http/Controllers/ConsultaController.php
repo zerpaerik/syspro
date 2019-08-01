@@ -360,42 +360,11 @@ class ConsultaController extends Controller
             ->select('*')
             ->where('id','=',\Auth::user()->id)
             ->first();
+
       
     $consulta = Consulta::find($request->id);
-    $consulta->pa =$request->pa;
-    $consulta->pulso =$request->pulso;
-    $consulta->temperatura =$request->temperatura;
-    $consulta->peso =$request->peso;
-    $consulta->fur =$request->fur;
-    $consulta->mac =$request->mac;
-    $consulta->motivo_consulta =$request->motivo_consulta;
-    $consulta->tipo_enfermedad =$request->tipo_enfermedad;
-    $consulta->evolucion_enfermedad =$request->evolucion_enfermedad;
-    $consulta->examen_fisico_regional =$request->examen_fisico_regional;
-    $consulta->presuncion_diagnostica =$request->presuncion_diagnostica;
-    $consulta->diagnostico_final =$request->diagnostico_final;
-    $consulta->ciex =$request->ciex;
-    $consulta->ciex2=$request->ciex2;
-    $consulta->examen_auxiliar=$request->examen_auxiliar;
-    $consulta->plan_tratamiento =$request->plan_tratamiento;
     $consulta->observaciones =$request->observaciones;
-    $consulta->profesional_id =$request->profesional_id;
-    $consulta->prox =$request->prox;
-    $consulta->personal =$users->name . " " .$users->lastname;
-    $consulta->apetito =$request->apetito;
-    $consulta->sed =$request->sed;
-    $consulta->orina =$request->orina;
-    $consulta->animo =$request->animo;
-     $consulta->amenorrea =$request->amenorrea;
-    $consulta->andria =$request->andria;
-    $consulta->g =$request->g;
-    $consulta->p =$request->p;
-    $consulta->pap =$request->pap;
-    $consulta->deposiciones =$request->deposiciones;
-    $consulta->card =$request->card;
-    $consulta->talla =$request->talla;
-    $consulta->pendiente =$request->pendiente;
-        $consulta->reevaluado=1;
+    $consulta->reevaluado=1;
     $consulta->save();
 
 
