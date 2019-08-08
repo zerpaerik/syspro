@@ -316,7 +316,13 @@
         <a href="reporte-solicitar_consolidado"><i class="fa fa-file-o"></i> Atenciòn Diaria Detallado</a>
       </li>
       <li>
-        <a href="{{route('generalatenciones.indexa')}}"><i class="fa fa-file-o"></i> General Atenciones</a>
+        <a href="{{route('generals.index')}}"><i class="fa fa-file-o"></i> General Atenciones Servicios</a>
+      </li>
+      <li>
+        <a href="{{route('generall.index')}}"><i class="fa fa-file-o"></i> General Atenciones Labs</a>
+      </li>
+      <li>
+        <a href="{{route('generalp.index')}}"><i class="fa fa-file-o"></i> General Atenciones Paquetes</a>
       </li>
        <li>
         <a href="{{route('generalegresos.indexe')}}"><i class="fa fa-file-o"></i> General Egresos</a>
@@ -664,7 +670,13 @@
         <a href="reporte-solicitar_consolidado"><i class="fa fa-file-o"></i> Atenciòn Diaria Detallado</a>
       </li>
       <li>
-        <a href="{{route('generalatenciones.indexa')}}"><i class="fa fa-file-o"></i> General Atenciones</a>
+        <a href="{{route('generals.index')}}"><i class="fa fa-file-o"></i> General Atenciones Servicios</a>
+      </li>
+      <li>
+        <a href="{{route('generall.index')}}"><i class="fa fa-file-o"></i> General Atenciones Labs</a>
+      </li>
+      <li>
+        <a href="{{route('generalp.index')}}"><i class="fa fa-file-o"></i> General Atenciones Paquetes</a>
       </li>
        <li>
         <a href="{{route('generalegresos.indexe')}}"><i class="fa fa-file-o"></i> General Egresos</a>
