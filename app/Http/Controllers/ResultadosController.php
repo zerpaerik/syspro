@@ -430,30 +430,6 @@ class ResultadosController extends Controller
          \DB::commit();
 
 
-              $s = new Atenciones();
-              $s->id_paciente = $id_paciente;
-              $s->origen = $origen;
-              $s->origen_usuario = Auth::user()->id;
-              $s->id_laboratorio =  1;
-              $s->id_servicio =  $id_servicio;
-              $s->id_paquete = 1;
-              $s->comollego = $comollego;
-              $s->es_paquete =  FALSE;
-              $s->es_servicio =  1;
-              $s->es_laboratorio =  FALSE;
-              $s->serv_prog = FALSE;
-              $s->tipopago = $tipopago;
-              $s->porc_pagar = $por_tec;
-              $s->pendiente = 0;
-              $s->monto = $monto;
-              $s->abono = $abono;
-              $s->resultado = 1;  
-              $s->pago_com_tec = 0;   
-              $s->porcentaje =$monto * $por_tec /100;
-              $s->id_sede =$request->session()->get('sede');
-              $s->estatus = 1;
-              $s->save(); 
-
                }
 
          ///PARA MATERIALES MALOGRADOS
