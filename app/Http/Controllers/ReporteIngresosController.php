@@ -9,6 +9,8 @@ use DB;
 use App\Models\Atenciones;
 use App\Models\Debitos;
 use App\Models\Analisis;
+use App\Models\Servicios;
+use App\Models\Paquetes;
 use App\Models\Creditos;
 use Auth;
 use Toastr;
