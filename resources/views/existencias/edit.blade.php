@@ -8,7 +8,7 @@
 			<div class="box-header">
 				<div class="box-name">
 					<i class="fa fa-users"></i>
-					<span><strong>Editar producto</strong></span>
+					<span><strong>Editar Producto</strong></span>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -30,39 +30,22 @@
 							<input type="text" class="form-control" name="nombre" placeholder="Nombre" data-toggle="tooltip" data-placement="bottom" value="{{$nombre}}" title="Nombre">
 						</div>
 
-
-						<label class="col-sm-1 control-label">Categoria</label>
-						<div class="col-sm-3">
-							<select class="form-control" name="categoria"  data-toggle="tooltip" data-placement="bottom">
-								@foreach($categorias as $categoria)
-									<option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-								@endforeach
-							</select>
-						</div>						
-
-						<label class="col-sm-1 control-label">Medida</label>
-						<div class="col-sm-3">
-							<select class="form-control" name="medida"  data-toggle="tooltip" data-placement="bottom">
-								@foreach($medidas as $medida)
-									<option value="{{$medida->id}}">{{$medida->nombre}}</option>
-								@endforeach
-							</select>
-						</div>
 						
-						<label class="col-sm-1 control-label">Precio Unit.</label>
+						<label class="col-sm-1 control-label">Unit.</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="preciounidad" value="{{$preciounidad}}" placeholder="preciounidad" data-toggle="tooltip" data-placement="bottom" title="preciounidad">
 						</div>
 
-						<label class="col-sm-1 control-label">Precio Venta.</label>
+						<label class="col-sm-1 control-label">Venta.</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="precioventa" value="{{$precioventa}}" placeholder="precioventa" data-toggle="tooltip" data-placement="bottom" title="precioventa">
 						</div>
 
-						<label class="col-sm-1 control-label">Vencimiento</label>
+						<label class="col-sm-1 control-label">Cantidad.</label>
 						<div class="col-sm-3">
-							<input type="date" class="form-control" name="vence" placeholder="Cantidad inicial" data-toggle="tooltip" data-placement="bottom" title="vence" value="{{$vence}}" min="0">
+							<input type="text" class="form-control" name="cantidad" value="{{$cantidad}}" placeholder="cantidad" data-toggle="tooltip" data-placement="bottom" title="cantidad">
 						</div>
+
 
 						<input type="hidden" name="id" value="{{$id}}">
 

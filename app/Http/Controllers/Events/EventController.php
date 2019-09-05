@@ -149,7 +149,8 @@ class EventController extends Controller
     DB::table('creditos')
             ->where('id_event', $request->event)
             ->update([
-              'monto' => $request->monto
+              'monto' => $request->monto,
+              'tipo_ingreso' => $request->tipopago
             ]);        
      
 

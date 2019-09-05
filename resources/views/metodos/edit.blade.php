@@ -52,6 +52,14 @@
 						<div class="col-sm-3">
 							<input type="text" class="form-control" value="{{$monto}}"  name="monto" placeholder="Monto" data-toggle="tooltip" data-placement="bottom" title="Precio">
 						</div>
+                           
+							<label class="col-sm-1 control-label">TipoPago</label>
+							<div class="col-sm-3">
+								<select id="el3" name="tipopago">
+										<option value="EF">EF</option>
+										<option value="TJ">TJ</option>
+								</select>
+							</div>	
 			
 
 						<input type="hidden" name="id" value="{{$id}}">

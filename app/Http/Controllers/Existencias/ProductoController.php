@@ -65,7 +65,8 @@ class ProductoController extends Controller
 
     public function editView($id){
       $p = Producto::find($id);
-      return view('existencias.edit', ["medidas" => Medida::all(), "categorias" => Categoria::all(), "nombre" => $p->nombre, "cantidad" => $p->cantidad,"codigo" => $p->codigo, "vence" => $p->vence,"id" => $p->id,"preciounidad" => $p->preciounidad,"precioventa" => $p->precioventa]);
+
+      return view('existencias.edit', ["medidas" => Medida::all(), "categorias" => Categoria::all(), "nombre" => $p->nombre, "cantidad" => $p->cantidad,"codigo" => $p->codigo, "vence" => $p->vence,"id" => $p->id,"preciounidad" => $p->preciounidad,"precioventa" => $p->precioventa,"categoria" => $p->categoria]);
       
     }
 
@@ -168,14 +169,7 @@ class ProductoController extends Controller
 
     public function edit(Request $request){
       $p = Producto::find($request->id);
-      $p->nombre = $request->nombre;
-      $p->categoria = $request->categoria;
-      $p->medida = $request->medida;
       $p->cantidad = $request->cantidad;
-	  $p->preciounidad = $request->preciounidad;
-      $p->precioventa = $request->precioventa;
-      $p->codigo = $request->codigo;
-      $p->vence = $request->vence;
       $res = $p->save();
       return redirect()->action('Existencias\ProductoController@index', ["edited" => $res]);
     }

@@ -53,10 +53,7 @@
 							<input type="number" class="form-control" placeholder="Monto" name="monto" required="required" value="{{$paciente->monto}}">
 						</div>
 
-						<label class="col-sm-1 control-label">Fecha</label>
-						<div class="col-sm-3">
-							<input type="text" id="input_date" class="form-control" placeholder="Fecha" name="date" required="required">
-						</div>
+					
 						<label class="col-sm-1 control-label">Hora</label>
 							<div class="col-sm-3">
 								<select id="el3" name="time">
@@ -70,9 +67,17 @@
 
 						<label class="col-sm-1 control-label">Tipo</label>
 							<div class="col-sm-2">
-								<select id="el3" name="tipo">
+								<select id="el5" name="tipo">
 										<option value="CONSULTAS">CONSULTAS</option>
 										<option value="CONTROLES">CONTROLES</option>
+								</select>
+							</div>	
+
+					    <label class="col-sm-1 control-label">TipoPago</label>
+							<div class="col-sm-3">
+								<select id="el4" name="tipopago">
+										<option value="EF">EF</option>
+										<option value="TJ">TJ</option>
 								</select>
 							</div>						
 
@@ -94,6 +99,8 @@ $(document).ready(function() {
 	LoadSelect2Script(function (){
 		$("#el2").select2();
 		$("#el1").select2();
+				$("#el5").select2();
+				$("#el4").select2();
 		$("#el3").select2({disabled : true});
 	});
 	WinMove();
