@@ -140,7 +140,7 @@ class EventController extends Controller
             ->update([
               'profesional' => $request->especialista,
               'paciente' => $request->paciente,
-              'date' => Carbon::createFromFormat('d/m/Y', $request->date),
+            //  'date' => Carbon::createFromFormat('d/m/Y', $request->date),
               'time' => $request->time,
               'tipo' => $request->tipo,
               'monto' => $request->monto
