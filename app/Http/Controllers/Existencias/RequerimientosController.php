@@ -229,7 +229,8 @@ class RequerimientosController extends Controller
 
     
 
-      public function edit(Request $request){
+     public function edit(Request $request){
+
 
 
         $searchRequerimiento = DB::table('requerimientos')
@@ -243,8 +244,10 @@ class RequerimientosController extends Controller
                     $producto = $searchRequerimiento->id_producto;
                     $sede_solicita = $searchRequerimiento->id_sede_solicita;
 
-             
-                  
+
+
+            
+        
 
         $searchProducto = DB::table('productos')
                     ->select('*')
@@ -263,9 +266,9 @@ class RequerimientosController extends Controller
          $searchProductoSedeSolicitad =  DB::table('productos')
                     ->select('*')
                    // ->where('estatus','=','1')
-                    ->where('codigo','=', $codigo)
-                    ->where('sede_id','=',$sede_solicita)
-                    ->where('almacen','=',2)
+                    ->where('padre','=', $producto)
+                   // ->where('sede_id','=',$sede_solicita)
+                   // ->where('almacen','=',2)
                     ->first(); 
 
                     if($searchProductoSedeSolicitad == NULL){
@@ -286,11 +289,17 @@ class RequerimientosController extends Controller
       $res = $p->save();
 
      
-      $p = Producto::where("nombre", "=", $nombre)->where("sede_id", "=",  $sede_solicita)->where("almacen","=", 2)->get()->first();
+      $p = Producto::where("padre", "=", $producto)->where('sede_id','=',$sede_solicita)->where('almacen','=',2)->first();
+
 
       if($p){
-        $p->cantidad = $cantidadactualsedesolicita + $request->cantidadd;
-        $p->save();
+        
+        $atec=Producto::where("padre","=",$producto)
+                          ->update(['cantidad' => $cantidadactualsedesolicita + $request->cantidadd]);
+
+
+
+
       }else{
 
         $prod = new Producto();
@@ -303,14 +312,17 @@ class RequerimientosController extends Controller
         $prod->sede_id = $sede_solicita;
         $prod->cantidad = $request->cantidadd;
         $prod->almacen = 2;
+        $prod->padre = $producto;
         $prod->save();
+
+          
+
 
       }
 
         Toastr::success('Procesado Exitosamente.', 'Requerimiento!', ['progressBar' => true]);
 
-               return back();
-
+          return back();
 
     }
 
