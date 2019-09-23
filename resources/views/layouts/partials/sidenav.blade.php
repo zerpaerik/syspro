@@ -99,6 +99,9 @@
           <li>
             <a href="{{route('productos.out')}}"><i class="fa fa-plus-square-o"></i> Ventas</a>
           </li>
+          <li>
+            <a href="{{route('descargar.index')}}"><i class="fa fa-plus-square-o"></i> Decargar Stock</a>
+          </li>
 @if(Session::get('sedeName') == 'INDEPENDENCIA')
 
           <li>
@@ -464,6 +467,9 @@
           <li>
             <a href="{{route('productos.out')}}"><i class="fa fa-plus-square-o"></i> Ventas</a>
           </li>
+          <li>
+            <a href="{{route('descargar.index')}}"><i class="fa fa-plus-square-o"></i> Decargar Stock</a>
+          </li>
 @if(Session::get('sedeName') == 'PROCERES')
 
           <li>
@@ -774,6 +780,9 @@
         <ul class="dropdown-menu">
           <li>
             <a href="{{route('productos.out')}}"><i class="fa fa-plus-square-o"></i> Ventas</a>
+          </li>
+          <li>
+            <a href="{{route('descargar.index')}}"><i class="fa fa-plus-square-o"></i> Decargar Stock</a>
           </li>
 
 

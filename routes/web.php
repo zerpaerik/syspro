@@ -401,6 +401,12 @@ Route::get('existencias-delete-{id}', 'Existencias\ProductoController@delete');
 Route::get('existencias-in', 'Existencias\ProductoController@productInView')->name('productos.in');
 Route::get('existencias-out', 'Existencias\ProductoController@productOutView')->name('productos.out');
 Route::get('existencias-trans', 'Existencias\ProductoController@productTransView')->name('productos.trans');
+
+Route::get('descargar-stock', 'Existencias\ProductoController@descargar')->name('descargar.index');
+Route::get('descargar-stock-create', 'Existencias\ProductoController@descargarcreate')->name('descargarcreate.index');
+Route::post('existencia/descargarstock', 'Existencias\ProductoController@procesarDescarga');
+
+
 Route::get('existencia/{prod}/{sede}', 'Existencias\ProductoController@getExist');
 Route::get('producto/{id}', 'Existencias\ProductoController@getProduct');
 Route::post('transfer', 'Existencias\ProductoController@transfer');
