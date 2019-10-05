@@ -28,6 +28,25 @@
 				</div>
 				<div class="no-move"></div>
 			</div>
+			{!! Form::open(['method' => 'get', 'route' => ['pacientes.index']]) !!}
+
+			<div class="row">
+                        <div class="col-md-3">
+                              {!! Form::label('paciente', '*', ['class' => 'control-label']) !!}
+                            {!! Form::text('paciente', old('paciente'), ['class' => 'form-control', 'placeholder' => 'Buscar por Apellidos']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('paciente'))
+                            <p class="help-block">
+                                {{ $errors->first('paciente') }}
+                          </p>
+                          @endif
+                    </div>
+				<div class="col-md-2">
+					{!! Form::submit(trans('Buscar'), array('class' => 'btn btn-info')) !!}
+					{!! Form::close() !!}
+
+				</div>
+			</div>
 			<div class="box-content no-padding">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
 					<thead>
@@ -155,8 +174,7 @@
 		}
 	</script>
 
-<script src="{{url('/tema/plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{url('/tema/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
 
 
 
