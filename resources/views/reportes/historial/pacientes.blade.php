@@ -112,7 +112,6 @@
 							<th>Fecha</th>
 							@if($d->atendido == 1)
 							<th>Estatus</th>
-							<th>Atendido Por:</th>
 							@else
 						    <th>Estatus</th>
 							@endif
@@ -126,10 +125,11 @@
 						<td>{{$d->date}}</td>
 						@if($d->atendido == 1)
 						<td style="background: #82FA58;">Fue Atendido</td>
-						<td>{{$d->nomate}} {{$d->apeate}}</td>
 						@else
 						<td style="background: #FE642E;">No ha sido Atendido</td>
 						@endif
+
+
 					</tr>
 						@endforeach
 		
