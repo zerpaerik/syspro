@@ -490,6 +490,9 @@ Route::post('services/edit','ServiceController@edit')->name('service.editar')->m
 Route::get('services-inicio','ServiceController@inicio')->name('service.inicio')->middleware('auth');
 Route::post('services/create', 'ServiceController@create')->middleware('auth');
 Route::get('service-{id}','ServiceController@show')->middleware('auth');
+Route::get('service/consultas','ServiceController@consultas');
+Route::get('service/servicios','ServiceController@servicios');
+Route::get('service/controles','ServiceController@controles');
 //Route::get('service-available-time/{e}/{d}/{m}/{y}', 'ServiceController@availableTime');
 /**
  * Reportes
