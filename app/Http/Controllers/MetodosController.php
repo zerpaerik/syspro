@@ -125,14 +125,22 @@ class MetodosController extends Controller
 	public function create(Request $request){
 
 
-         $proximo=date("Y-m-d",strtotime($request->created_at."+ 30 days"));
+         $proximo=date("Y-m-d",strtotime($request->created_at."+ 28 days"));
+
+         $producto= Producto::where('id',$request->producto)->first();
+
+       //  dd($producto->nombre);
 
  
          $metodos = new Metodos();
          $metodos->id_paciente =$request->paciente;
          $metodos->id_producto =$request->producto;
          $metodos->monto =$request->monto;
-         $metodos->proximo = $proximo;
+         if($producto->nombre =='DEPOPROVERA'){
+           $metodos->proximo = date("Y-m-d",strtotime($request->created_at."+ 88 days"));
+         } else{
+           $metodos->proximo = date("Y-m-d",strtotime($request->created_at."+ 28 days"));
+         }
         //s $metodos->personal = $request->personal;
          $metodos->estatus ='No Llamado';
          $metodos->id_usuario = \Auth::user()->id;
