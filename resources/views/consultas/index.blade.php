@@ -127,10 +127,9 @@
 							<th>Especialista</th>
 							<th>Monto</th>
 							<th>Fecha</th>
-							<th>Horas</th>
 							<th>Estatus</th>
-							<th>Tipo</th>
-							<th>TP</th>
+							<th>Tipo</th>							
+							<th>TP</th>
 							<th>Acciones:</th>
 						</tr>
 					</tfoot>
