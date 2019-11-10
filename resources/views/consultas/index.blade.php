@@ -70,7 +70,8 @@
 							<th>Monto</th>
 							<th>Fecha</th>
 							<th>Estatus</th>
-							<th>Tipo</th>
+							<th>Tipo</th>							
+							<th>TP</th>
 							<th>Acciones:</th>
 						</tr>
 					</thead>
@@ -89,8 +90,8 @@
 						<td style="background: #FE642E;">No ha sido Atendido</td>
 						@endif
 						<td>{{$d->tipo}}</td>
+						<td>{{$d->tipo_ingreso}}</td>
 						<td>
-
 
                         @if($d->tipo == 'CONSULTAS')
 
@@ -129,6 +130,7 @@
 							<th>Horas</th>
 							<th>Estatus</th>
 							<th>Tipo</th>
+							<th>TP</th>
 							<th>Acciones:</th>
 						</tr>
 					</tfoot>
