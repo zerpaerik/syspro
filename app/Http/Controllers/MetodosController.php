@@ -290,7 +290,7 @@ class MetodosController extends Controller
    public function editView($id){
    	  $p =Metodos::find($id);
      
-      return view('metodos.edit', ["paciente" => $p->id_paciente, "producto" => $p->id_producto, "monto" => $p->monto, "id" => $p->id,"tipopago" => $p->tipopago,"pacientes" =>Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get(),"productos" => Producto::where("almacen",'=',2)->orderby('nombre','asc')->get()]);
+      return view('metodos.edit', ["paciente" => $p->id_paciente, "producto" => $p->id_producto, "monto" => $p->monto, "id" => $p->id,"tipopago" => $p->tipopago,"pacientes" =>Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get(),"productos" => Producto::where("almacen",'=',2)->where("categoria",'=',3)->where("sede_id",'=',$request->session()->get('sede'))->orderby('nombre','asc')->get()]);
       
     }   
 
