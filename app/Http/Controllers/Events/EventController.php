@@ -266,7 +266,7 @@ class EventController extends Controller
 
     $paciente = Paciente::find($request->paciente);
 
-    $user = User::where('id','=',Auth::user()->id);
+    $user = User::where('id','=',Auth::user()->id)->first();
 
   
     
