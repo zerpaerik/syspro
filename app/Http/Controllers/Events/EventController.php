@@ -21,6 +21,8 @@ use App\Models\Existencias\{Producto, Existencia, Transferencia};
 use App\Historial;
 use App\Consulta;
 use Toastr;
+use Auth;
+
 
 class EventController extends Controller
 {
