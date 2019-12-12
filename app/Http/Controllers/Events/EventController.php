@@ -12,6 +12,7 @@ use App\Models\Creditos;
 use App\Models\Events;
 use App\Models\Ciex;
 use App\Models\Historiales;
+use App\User;
 use Calendar;
 use Carbon\Carbon;
 use DB;
