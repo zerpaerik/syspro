@@ -55,7 +55,7 @@ class EventController extends Controller
     $f2 = $request->fecha2;    
 
     $event = DB::table('events as e')
-    ->select('e.id as EventId','e.paciente','e.tipo','e.created_at','e.tipo','e.atendido','e.title','e.sede','e.monto','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.apellidos','p.id as pacienteId','per.name as nombrePro','per.lastname as apellidoPro','per.id as profesionalId','cr.tipo_ingreso')
+    ->select('e.id as EventId','e.paciente','e.tipo','e.usuario','e.created_at','e.tipo','e.atendido','e.title','e.sede','e.monto','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.apellidos','p.id as pacienteId','per.name as nombrePro','per.lastname as apellidoPro','per.id as profesionalId','cr.tipo_ingreso')
     ->join('pacientes as p','p.id','=','e.paciente')
     ->join('personals as per','per.id','=','e.profesional')
     ->join('creditos as cr','cr.id_event','e.id')
@@ -67,7 +67,7 @@ class EventController extends Controller
   } else {
 
     $event = DB::table('events as e')
-   ->select('e.id as EventId','e.paciente','e.tipo','e.created_at','e.tipo','e.atendido','e.title','e.sede','e.monto','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.apellidos','p.id as pacienteId','per.name as nombrePro','per.lastname as apellidoPro','per.id as profesionalId','cr.tipo_ingreso')
+   ->select('e.id as EventId','e.paciente','e.tipo','e.usuario','e.created_at','e.tipo','e.atendido','e.title','e.sede','e.monto','e.profesional','e.date','e.time','p.dni','p.direccion','p.telefono','p.fechanac','p.gradoinstruccion','p.ocupacion','p.nombres','p.apellidos','p.id as pacienteId','per.name as nombrePro','per.lastname as apellidoPro','per.id as profesionalId','cr.tipo_ingreso')
     ->join('pacientes as p','p.id','=','e.paciente')
     ->join('personals as per','per.id','=','e.profesional')
     ->join('creditos as cr','cr.id_event','e.id')
@@ -263,6 +263,8 @@ class EventController extends Controller
 
     $paciente = Paciente::find($request->paciente);
 
+    $user = User::where('id','=',Auth::user()->id);
+
   
     
         $evt = new Event;
@@ -272,6 +274,7 @@ class EventController extends Controller
         $evt->title=$paciente->nombres . " " . $paciente->apellidos . " Paciente.";
         $evt->monto=$request->monto;
         $evt->sede=$request->session()->get('sede');
+        $evt->usuario= $user->name . " " . $user->lastname;
         $evt->tipo=$request->tipo;
         $evt->save();
 
