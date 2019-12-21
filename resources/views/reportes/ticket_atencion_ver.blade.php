@@ -70,7 +70,7 @@ margin-top: -20px;
 	</div>
 
  <div class="" style="font-size: 40px; text-align: center;margin-bottom:-60px;margin-top: 2px;">
-		<p><strong>MADRE TERESA - {{Session::get('sedeName')}}</strong></p>
+		<p><strong>MADRE TERESAA - {{Session::get('sedeName')}}</strong></p>
 		<p><strong>RUC: 20601183961</strong></p>
 		@if(Session::get('sedeName') == 'INDEPENDENCIA')
 		<p><strong>Teléfono: 5265711</strong></p>
@@ -81,8 +81,10 @@ margin-top: -20px;
 	</div>
 
     <div class="" style="font-size: 40px; text-align: left;margin-bottom:-40px;">
-		<p><strong>FECHA:{{ $ticket->created_at}}</strong></p>
+		<p><strong>FECHA:{{ date('d/m/Y', strtotime($ticket->created_at)) }}</strong></p>
 	</div>
+
+
 
 	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-40px;">
 		<p><strong>PACIENTE:{{ $ticket->nombres}},{{ $ticket->apellidos}} {{ $ticket->dni}}</strong></p>
@@ -108,6 +110,10 @@ margin-top: -20px;
 	<div class="" style="font-size: 40px; text-align: left;">
 		<p><strong>RESTA: {{ $ticket->pendiente}}</strong></p>
 	</div>
+
+	<br><br><br><br><br><br><br><br>
+	<center><p style="font-size: 60px;">COMUNICADO</p></center>
+	<p style="text-align: justify;font-size: 30px;">Estimado cliente se informa, que todo estudio que quede pendiente de su realizaciòn <strong>tiene un plazo no mayor a 30 dias,</strong>contando desde la fecha de su cancelaciòn, <strong>pasado este tiempo quedarà como anulado dicho estudio</strong>. Asi mismo las <strong>consultas de reevaluaciòn tienen un plazo de 15 dias,</strong> pasado este tiempo el paciente deberà cancelar por su consulta.</p>
 
 	
 
