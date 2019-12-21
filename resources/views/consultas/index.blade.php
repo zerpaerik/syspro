@@ -72,6 +72,7 @@
 							<th>Estatus</th>
 							<th>Tipo</th>							
 							<th>TP</th>
+							<th>RP</th>
 							<th>Acciones:</th>
 						</tr>
 					</thead>
@@ -91,6 +92,7 @@
 						@endif
 						<td>{{$d->tipo}}</td>
 						<td>{{$d->tipo_ingreso}}</td>
+						<td>{{$d->usuario}}</td>
 						<td>
 
                         @if($d->tipo == 'CONSULTAS')
