@@ -64,6 +64,8 @@
 
 
 			<div class="box-content no-padding">
+
+<div class="box-content no-padding table-responsive">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
 					<thead>
 						<tr>
@@ -144,6 +146,7 @@
 					</tfoot>
 
 				</table>
+			</div>
 			</div>
 		</div>
 	</div>
