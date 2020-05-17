@@ -326,6 +326,7 @@ class AtencionesController extends Controller
         $evt->monto=0;
         $evt->sede=$request->session()->get('sede');
         $evt->tipo='CONSULTAS';
+        $evt->paquete=$paq->id;
         $evt->save();
             
               //guardando credito
@@ -378,6 +379,7 @@ class AtencionesController extends Controller
         $evt->monto=0;
         $evt->sede=$request->session()->get('sede');
         $evt->tipo='CONTROLES';
+        $evt->paquete=$paq->id;
         $evt->save();
             
               //guardando credito
@@ -717,6 +719,7 @@ class AtencionesController extends Controller
         $evt->monto=0;
         $evt->sede=$request->session()->get('sede');
         $evt->tipo='CONSULTAS';
+            $evt->paquete=$paq->id;
         $evt->save();
             
               //guardando credito
@@ -770,6 +773,7 @@ $paciente = DB::table('pacientes')
         $evt->monto=0;
         $evt->sede=$request->session()->get('sede');
         $evt->tipo='CONTROLES';
+            $evt->paquete=$paq->id;
         $evt->save();
             
               //guardando credito
