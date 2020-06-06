@@ -33,13 +33,16 @@
 					
 				</div>	
                 <div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<strong>Nacimiento:</strong> {{$pacientes->fechanac}}
 					</div>
-					<div class="col-sm-4">
+                    <div class="col-sm-3">
+						<strong>Edad:</strong> {{$edad}}
+					</div>
+					<div class="col-sm-3">
 						<strong>Grado.Ins:</strong> {{$pacientes->gradoinstruccion}}
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<strong>Ocupaciòn:</strong> {{$pacientes->ocupacion}}
 					</div>
 				</div>				
