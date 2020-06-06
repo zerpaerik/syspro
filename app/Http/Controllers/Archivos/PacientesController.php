@@ -120,13 +120,13 @@ class PacientesController extends Controller
     {
 	  
 	   $pacientes = DB::table('pacientes as a')
-              
-			  ->select('a.id','a.nombres','a.apellidos','a.dni','a.historia','a.direccion','a.gradoinstruccion','a.telefono','a.fechanac','a.ocupacion','a.distrito','b.nombre')
+			  ->select('a.id','a.nombres','a.apellidos','a.fechanac as fechanac','a.dni','a.historia','a.direccion','a.gradoinstruccion','a.telefono','a.fechanac','a.ocupacion','a.distrito','b.nombre')
               ->join('distritos as b','b.id','a.distrito')
 			  ->where('a.id','=', $id)
               ->first();
-	  
-      return view('archivos.pacientes.show', compact('pacientes'));
+      $edad = Carbon::parse($pacientes->fechanac)->age;	  
+         
+      return view('archivos.pacientes.show', compact('pacientes', 'edad'));
     }	  
 
 	public function create(Request $request){
