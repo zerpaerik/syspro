@@ -89,6 +89,7 @@ class OtrosIngresosController extends Controller
     $ingresos = Creditos::find($id);
     $ingresos->delete();
     return view('movimientos.ingresos.index');
+  }
 
   public function createView() {
 
