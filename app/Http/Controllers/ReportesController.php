@@ -70,6 +70,127 @@ class ReportesController extends Controller
          }  
 
      }
+    
+    public function reportdetallado(){
+
+       return view('reportes.general_detalle');
+    }
+    
+     public function reportdetalladog(){
+
+       return view('reportes.general_detalleg');
+    }
+
+  public function detallado(Request $request){
+
+
+
+
+        $f1= $request->f1;
+        $f2= $request->f2;
+
+    
+
+
+          $ingresos = DB::table('creditos as a')
+                ->select('a.id','a.created_at','a.date','a.id_sede',DB::raw('SUM(monto) as monto'),DB::raw('SUM(efectivo) as efectivo'),DB::raw('SUM(tarjeta) as tarjeta'))
+                ->where('a.id_sede','=',  $request->session()->get('sede'))
+                ->whereBetween('a.date', [$f1,$f2])
+                ->whereNotIn('a.monto',[0,0.00])
+                ->groupBy('a.date')
+                ->get();  
+
+
+
+
+        $total= Creditos::where('id_sede','=', $request->session()->get('sede'))
+                                    ->whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as monto'))
+                                    ->first();
+      
+         $egresos=Debitos::where('id_sede','=', $request->session()->get('sede'))
+                                    ->whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as egreso'),'date')
+                                    ->groupBy('date')
+                                    ->get();
+                       
+                                    
+        $debitos=Debitos::where('id_sede','=', $request->session()->get('sede'))
+                                    ->whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as monto'))
+                                    ->first();
+         if($debitos != null){
+
+         $saldo= $total->monto - $debitos->monto;
+         } else {
+          $saldo= $total->monto - '0';
+         }
+        
+         //dd($egresos);
+
+
+
+
+         $view = \View::make('reportes.detallado',compact('f1','f2','ingresos','egresos','debitos','total','saldo'));
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+     
+       
+        return $pdf->stream('movimientos'.'.pdf');
+
+    }
+    
+      public function detalladog(Request $request){
+
+
+
+
+        $f1= $request->f1;
+        $f2= $request->f2;
+
+    
+
+
+          $ingresos = DB::table('creditos as a')
+                ->select('a.id','a.created_at','a.date',DB::raw('SUM(monto) as monto'),DB::raw('SUM(efectivo) as efectivo'),DB::raw('SUM(tarjeta) as tarjeta'))
+                ->whereBetween('a.date', [$f1,$f2])
+                ->whereNotIn('a.monto',[0,0.00])
+                ->groupBy('a.date')
+                ->get();  
+
+
+
+
+        $total= Creditos::whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as monto'))
+                                    ->first();
+         $egresos=Debitos::whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as egreso'),'date')
+                                    ->groupBy('date')
+                                    ->get();
+                       
+                                    
+        $debitos=Debitos::whereBetween('date', [$f1,$f2])
+                                    ->select(DB::raw('SUM(monto) as monto'))
+                                    ->first();
+
+         $saldo= $total->monto - $debitos->monto;
+        
+         //dd($egresos);
+
+
+
+
+         $view = \View::make('reportes.detalladog',compact('f1','f2','ingresos','egresos','debitos','total','saldo'));
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+     
+       
+        return $pdf->stream('movimientos'.'.pdf');
+
+    }
 
 
     public function editar($id)
