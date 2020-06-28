@@ -88,8 +88,7 @@ class OtrosIngresosController extends Controller
   public function delete($id){
     $ingresos = Creditos::find($id);
     $ingresos->delete();
-    return redirect()->action('OtrosIngresosController@index', ["deleted" => true, "ingresos" => Creditos::all()]);
-  }
+    return view('movimientos.ingresos.index');
 
   public function createView() {
 
