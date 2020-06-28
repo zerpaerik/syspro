@@ -1123,7 +1123,7 @@ $paciente = DB::table('pacientes')
   }
   
    public function delete($id){
-    $atenciones = Atenciones::find($id);
+    $atenciones = Atenciones::where('id','=',$id);
     $atenciones->delete();
     
      $atenciones2 = Atenciones::where('paquete','=',$id);
@@ -1137,7 +1137,7 @@ $paciente = DB::table('pacientes')
   
 	 Toastr::error('Eliminado Exitosamente.', 'Ingreso de Atenciòn!', ['progressBar' => true]);
 
-     return redirect()->action('AtencionesController@index', ["created" => true, "atenciones" => Atenciones::all()]);
+     return back();
 	
   }
   
