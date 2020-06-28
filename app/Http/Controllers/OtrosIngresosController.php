@@ -86,9 +86,10 @@ class OtrosIngresosController extends Controller
 	}    
 
   public function delete($id){
-    $ingresos = Creditos::find($id);
+     $ingresos = Creditos::find($id);
     $ingresos->delete();
-    return view('movimientos.ingresos.index');
+   Toastr::success('Eliminado Exitosamente.', 'Ingreso!', ['progressBar' => true]);
+    return back();
   }
 
   public function createView() {
