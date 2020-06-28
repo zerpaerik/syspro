@@ -276,6 +276,8 @@ Route::post('ingresos/create', 'OtrosIngresosController@create')->middleware('au
 Route::get('ingresos/{id}', 'OtrosIngresosController@delete')->middleware('auth');
 Route::get('ingresos-edit-{id}', 'OtrosIngresosController@editView')->name('ingresos.edit');
 Route::post('ingresos/edit', 'OtrosIngresosController@edit');
+Route::get('ingresos-delete-{id}', 'OtrosIngresosController@delete')->name('ingresos.delete');
+
 
 Route::get('cuentasporcobrar', 'CuentasporCobrarController@index')->name('cuentasporcobrar.index')->middleware('auth');
 Route::get('cuentasporcobrar-search', 'CuentasporCobrarController@search')->name('cuentasporcobrar.search')->middleware('auth');
