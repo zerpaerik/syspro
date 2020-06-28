@@ -512,6 +512,12 @@ Route::get('recibo_gasto_ver/{id}','ReportesController@recibo_gasto_ver');
 
 Route::get('historial_pacientes', 'ReportesController@historialp')->name('historial.pacientes');
 
+Route::get('report-detallado', 'ReportesController@reportdetallado')->name('report.detallado');
+Route::get('reporte/detallado', 'ReportesController@detallado');
+
+Route::get('report-detalladog', 'ReportesController@reportdetalladog')->name('report.detalladog');
+Route::get('reporte/detalladog', 'ReportesController@detalladog');
+
 
 
 
