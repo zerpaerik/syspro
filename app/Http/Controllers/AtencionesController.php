@@ -191,6 +191,12 @@ class AtencionesController extends Controller
               $creditos->id_sede = $request->session()->get('sede');
               $creditos->tipo_ingreso = $request->tipopago;
               $creditos->descripcion = 'INGRESO DE ATENCIONES';
+              $creditos->date = date('Y-m-d');
+              if($request->tipopago=='EF'){
+              $creditos->efectivo = $request->monto_abop['paquetes'][$key]['abono'];
+              }else{
+              $creditos->tarjeta = $request->monto_abop['paquetes'][$key]['abono'];
+              }
               $creditos->save();
 
 
@@ -473,6 +479,12 @@ class AtencionesController extends Controller
               $creditos->id_sede = $request->session()->get('sede');
               $creditos->tipo_ingreso = $request->tipopago;
               $creditos->descripcion = 'INGRESO DE ATENCIONES';
+              $creditos->date = date('Y-m-d');
+              if($request->tipopago=='EF'){
+              $creditos->efectivo = $request->monto_abos['servicios'][$key]['abono'];
+              }else{
+              $creditos->tarjeta = $request->monto_abos['servicios'][$key]['abono'];
+              }
               $creditos->save();
         } else {
 
@@ -532,6 +544,12 @@ class AtencionesController extends Controller
           $creditos->id_sede = $request->session()->get('sede');
           $creditos->tipo_ingreso = $request->tipopago;
           $creditos->descripcion = 'INGRESO DE ATENCIONES';
+          $creditos->date = date('Y-m-d');
+          if($request->tipopago=='EF'){
+          $creditos->efectivo = $request->monto_abol['laboratorios'][$key]['abono'];
+          }else{
+          $creditos->tarjeta = $request->monto_abol['laboratorios'][$key]['abono'];
+          }
           $creditos->save();
         } else {
 
@@ -587,6 +605,12 @@ class AtencionesController extends Controller
               $creditos->id_sede = $request->session()->get('sede');
               $creditos->tipo_ingreso = $request->tipopago;
               $creditos->descripcion = 'INGRESO DE ATENCIONES';
+              $creditos->date = date('Y-m-d');
+              if($request->tipopago=='EF'){
+              $creditos->efectivo = $request->monto_abop['paquetes'][$key]['abono'];
+              }else{
+              $creditos->tarjeta = $request->monto_abop['paquetes'][$key]['abono'];
+              }
               $creditos->save();
 
 
@@ -896,6 +920,12 @@ $paciente = DB::table('pacientes')
               $creditos->id_sede = $request->session()->get('sede');
               $creditos->tipo_ingreso = $request->tipopago;
               $creditos->descripcion = 'INGRESO DE ATENCIONES';
+              $creditos->date = date('Y-m-d');
+               if($request->tipopago=='EF'){
+              $creditos->efectivo = $request->monto_abos['servicios'][$key]['abono'];
+              }else{
+              $creditos->tarjeta = $request->monto_abos['servicios'][$key]['abono'];
+              }
               $creditos->save();
         } else {
 
@@ -951,6 +981,12 @@ $paciente = DB::table('pacientes')
           $creditos->id_sede = $request->session()->get('sede');
           $creditos->tipo_ingreso = $request->tipopago;
           $creditos->descripcion = 'INGRESO DE ATENCIONES';
+          $creditos->date = date('Y-m-d');
+           if($request->tipopago=='EF'){
+          $creditos->efectivo = $request->monto_abol['laboratorios'][$key]['abono'];
+          }else{
+          $creditos->tarjeta = $request->monto_abol['laboratorios'][$key]['abono'];
+          }
           $creditos->save();
         } else {
 
