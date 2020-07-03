@@ -131,7 +131,7 @@ class ReportesController extends Controller
 
 
 
-         $view = \View::make('reportes.detallado',compact('f1','f2','ingresos','egresos','debitos','total','saldo'));
+         $view = \View::make('reportes.detalladosede',compact('f1','f2','ingresos','egresos','debitos','total','saldo'));
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
