@@ -281,14 +281,17 @@ class EventController extends Controller
         $evt->tipo=$request->tipo;
         $evt->save();
 
-      $credito = Creditos::create([
-        "origen" => 'CONSULTAS',
-        "descripcion" => 'CONSULTAS',
-        "monto" => $request->monto,
-        "tipo_ingreso" => $request->tipopago,
-        "id_sede" => $request->session()->get('sede'),
-        "id_event" => $evt->id
-      ]);
+   
+      
+       $creditos = new Creditos();
+                    $creditos->origen = 'CONSULTAS';
+                    $creditos->descripcion = 'CONSULTAS';
+                    $creditos->monto= $request->monto;
+                    $creditos->id_sede = $request->session()->get('sede');
+                    $creditos->tipo_ingreso = $request->tipopago;
+                    $creditos->id_event = $evt->id;
+                    $creditos->date = date('Y-m-d');
+                    $creditos->save();
 	  
 	 
    
