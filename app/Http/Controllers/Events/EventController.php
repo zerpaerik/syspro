@@ -280,6 +280,8 @@ class EventController extends Controller
         $evt->usuario= $user->name . " " . $user->lastname;
         $evt->tipo=$request->tipo;
         $evt->save();
+      
+        
 
    
       
@@ -291,7 +293,12 @@ class EventController extends Controller
                     $creditos->tipo_ingreso = $request->tipopago;
                     $creditos->id_event = $evt->id;
                     $creditos->date = date('Y-m-d');
-                    $creditos->save();
+                      if($request->tipopago=='EF'){
+                      $creditos->efectivo = $request->monto;
+                      }else{
+                      $creditos->tarjeta = $request->monto;
+                      }
+                      $creditos->save();
 	  
 	 
    
