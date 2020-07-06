@@ -53,14 +53,17 @@ class GastosController extends Controller
         ]);
         if($validator->fails()) 
           return redirect()->action('GastosController@createView', ['errors' => $validator->errors()]);
-		$gastos = Debitos::create([
-	      'descripcion' => $request->descripcion,
-	      'monto' => $request->monto,
-        'nombre' => $request->nombre,
-	      'origen' => 'RELACION DE GASTOS',
-	      'id_sede' => $request->session()->get('sede'),
-        'usuario' => Auth::user()->id
-   		]);
+		
+        
+          $gastos = new Debitos();
+          $gastos->descripcion =$request->descripcion;
+          $gastos->monto =$request->monto;
+		  $gastos->nombre = $request->nombre;
+          $gastos->origen = 'RELACION DE GASTOS';
+		  $gastos->date = date('Y-m-d');
+          $gastos->usuario = \Auth::user()->id;
+		  $gastos->id_sede = $request->session()->get('sede');
+          $gastos->save();
 		
 		  $historial = new Historiales();
           $historial->accion ='Registro';
