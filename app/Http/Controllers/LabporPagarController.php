@@ -90,11 +90,12 @@ class LabporPagarController extends Controller
                 $debitos->origen = 'LAB POR PAGAR';
                 $debitos->monto= $costo;
                 $debitos->descripcion = $name;
+                $debitos->date = date('Y-m-d');
+                $debitos->usuario = \Auth::user()->id;
                 $debitos->id_sede = $request->session()->get('sede');
                 $debitos->save();  
-
-              
-
+      
+    
 
                 $pagados = new LaboratoriosPagados();
                 $pagados->laboratorio = $laboratorio;
