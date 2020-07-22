@@ -85,10 +85,6 @@ margin-top: -20px;
 	</div>
 
 	
-	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-50px;">
-		<p><strong>ESPECIALISTA:{{ $paciente->nombrePro}} {{ $paciente->apellidoPro}}
-		</strong></p>
-	</div>
 
 	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-50px;">
 		<p><strong>TIPO DE CONSULTA:{{ $paciente->tipo}}
