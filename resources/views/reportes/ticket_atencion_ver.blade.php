@@ -95,9 +95,7 @@ margin-top: -20px;
 		</strong></p>
 	</div>
 
-	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-40px;">
-		<p><strong>ORIGEN:{{ $ticket->nompac}},{{ $ticket->apepac}}</strong></p>
-	</div>
+	
 
 	<div class="" style="font-size: 40px; text-align: left;margin-bottom:-40px;">
 		<p><strong>MONTO: {{ $ticket->monto}}</strong></p>
