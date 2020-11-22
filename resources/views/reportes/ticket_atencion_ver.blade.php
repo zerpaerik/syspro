@@ -5,7 +5,7 @@
         padding: 0;
       }
       .table-main{
-       margin-left:-55px;
+       margin-left:-45px;
        margin-right:-56px;
       }
       .cl{
@@ -42,7 +42,7 @@
 
     <div  style="font-size: 15px; text-align: center;margin-bottom:-60px;margin-top: -30px;">
 		<p><strong>SYSMEDIC PERU SAC - {{Session::get('sedeName')}}</strong></p>
-		<p style="margin-top: -20px;"><strong>RUC: 20601183961</strong></p>
+		<p style="margin-top: -20px;"><strong>RUC: 20606283980</strong></p>
 		@if(Session::get('sedeName') == 'INDEPENDENCIA')
 		<p><strong>Teléfono: 5265711</strong></p>
 		<p><strong>WhatsApp: 940309507</strong></p>
@@ -70,7 +70,8 @@
 	</div>
   <br><br>
 
-    <table width="100%" class="table-main">
+  
+  <table width="100%" class="table-main">
       <thead>
         <tr>
           <th style="font-size: 15px"><center>Detalle.<center></th>
@@ -84,6 +85,8 @@
           </tr>
       </tbody>
     </table>
+
+
 
 
     <br>

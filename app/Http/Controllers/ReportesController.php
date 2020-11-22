@@ -204,7 +204,7 @@ class ReportesController extends Controller
       public function recibo_cobro_ver($id)
   { 
         $recibo = DB::table('historialcobros as a')
-        ->select('a.id','a.id_atencion','a.id_paciente','a.monto','a.abono_parcial','a.abono','a.pendiente','b.nombres','b.apellidos','a.created_at','a.updated_at')
+        ->select('a.id','a.id_atencion','a.id_paciente','a.monto','a.abono_parcial','a.abono','a.pendiente','b.nombres','b.apellidos','b.dni','a.created_at','a.updated_at')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->where('a.id','=',$id)
         ->first();
@@ -213,9 +213,10 @@ class ReportesController extends Controller
        $view = \View::make('reportes.recibocobro', compact('recibo'));
       
        //$view = \View::make('reportes.cierre_caja_ver')->with('caja', $caja);
-       $pdf = \App::make('dompdf.wrapper');
-    $pdf->setPaper(array(0,0,800.00,3000.00));
-       $pdf->loadHTML($view);
+       $customPaper = array(0,0,900.00,200.00);
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper($customPaper, 'landscape');
        return $pdf->stream('cobro');
 
   }

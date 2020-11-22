@@ -42,7 +42,7 @@
 
     <div  style="font-size: 15px; text-align: center;margin-bottom:-60px;margin-top: -30px;">
 		<p><strong>SYSMEDIC PERU SAC - {{Session::get('sedeName')}}</strong></p>
-		<p style="margin-top: -20px;"><strong>RUC: 20601183961</strong></p>
+		<p style="margin-top: -20px;"><strong>RUC: 20606283980</strong></p>
 		@if(Session::get('sedeName') == 'INDEPENDENCIA')
 		<p><strong>Teléfono: 5265711</strong></p>
 		<p><strong>WhatsApp: 940309507</strong></p>
