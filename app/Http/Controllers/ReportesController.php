@@ -921,8 +921,19 @@ class ReportesController extends Controller
         File::delete(File::glob('*.docx'));
         $informe = $templateProcessor = new TemplateProcessor(public_path('modelos_informes/'.$informe));
         $resultados = ReportesController::elasticSearch($id);
+
+        if($resultados->es_servicio == '1'){
+            $modelo = $resultados->servicio;
+    
+        } else {
+            $modelo = $resultados->laboratorio;
+    
+    
+        }
+
+
         $informe->setValue('name', $resultados->nombrePaciente. ' '.$resultados->apellidoPaciente);
-        $informe->setValue('descripcion',$resultados->servicio);
+        $informe->setValue('descripcion',$modelo);
         $informe->setValue('date',date('d-m-Y'));        
         //dd($resultados->origen);
         if ($resultados->origen == 1) {
