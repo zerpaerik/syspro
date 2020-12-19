@@ -304,18 +304,19 @@ class MetodosController extends Controller
       public function edit(Request $request){
 
 	          $metodos = Metodos::find($request->id);
-	          $metodos->id_paciente =$request->paciente;
+	         // $metodos->id_paciente =$request->paciente;
 	          $metodos->id_producto =$request->producto;
            // $metodos->tipopago =$request->tipopago;
-			  $metodos->monto =$request->monto;
-			  $res = $metodos->save();
+            $metodos->monto =$request->monto;
+            $res = $metodos->save();
 
 
 
 			  DB::table('creditos')
             ->where('id_metodo', $request->id)
             ->update([
-              'monto' => $request->monto
+              'monto' => $request->monto,
+              'tipo_ingreso' => $request->tipopago,
             ]);
 
 
