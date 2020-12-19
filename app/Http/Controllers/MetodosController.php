@@ -306,7 +306,7 @@ class MetodosController extends Controller
 	          $metodos = Metodos::find($request->id);
 	          $metodos->id_paciente =$request->paciente;
 	          $metodos->id_producto =$request->producto;
-            $metodos->tipopago =$request->tipopago;
+           // $metodos->tipopago =$request->tipopago;
 			  $metodos->monto =$request->monto;
 			  $res = $metodos->save();
 
