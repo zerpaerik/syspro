@@ -114,6 +114,13 @@ class PacientesController extends Controller
      }     
      
   }  
+
+  public function filtro($filtro){
+
+    $pacientes =Pacientes::where('dni','=',$filtro)->orderby('apellidos','asc')->get();
+
+    return $pacientes;
+   }
   
 
      public function show($id)

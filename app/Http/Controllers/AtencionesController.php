@@ -1033,6 +1033,26 @@ $paciente = DB::table('pacientes')
     return view('movimientos.atenciones.particular');
   }
 
+  public function VerDataPacientes($id){
+
+       
+
+    $pacientes = DB::table('pacientes as a')
+   ->select('a.id','a.dni','a.nombres','a.apellidos','a.direccion','a.telefono','a.fechanac')
+   ->where('a.dni','=',$id)
+   ->first();
+
+       $edad = Carbon::parse($pacientes->fechanac)->age;
+
+
+   //return $pacientes;
+
+       return view('movimientos.atenciones.dataPacientes',compact('pacientes','edad'));
+
+  
+
+}
+
   public function editView($id)
   {
     //$servicios = Servicios::all();

@@ -25,22 +25,38 @@
 				<form class="form-horizontal" role="form" method="post" action="atenciones/create">
 					{{ csrf_field() }}
 					<div class="form-group">
+            <div class="row">
+              <div class="col-sm-3">
+             <a href="{{route('pacientes.create2')}}"><i class="fa fa-wheelchair"></i> Crear Pacientes</a>
+           </div>
+            </div>
 
 						<div class="row">
 
 						<label class="col-sm-1 control-label">Pacientes</label>
+            <form action="" method="get">
 						<div class="col-sm-3">
-							<select id="el1" name="id_paciente">
-								@foreach($pacientes as $pac)
-									<option value="{{$pac->id}}">
-										{{$pac->nombres}} {{$pac->apellidos}}-{{$pac->dni}}
-									</option>
-								@endforeach
-							</select>
+							<input id="el1" type="text" name="paciente" placeholder="Introducir DNI del Paciente" onsubmit="datapac()">
 						</div>
-            <a href="{{route('pacientes.create2')}}"><i class="fa fa-wheelchair"></i> Crear Pacientes</a>
+            <div class="col-sm-2">
+
+                <input type="button" value="Buscar">
+            </div>
+
+
+          </form>
+
+         
            
-						</div>
+          </div>
+          <div class="box-conten">
+                <div id="pacientes" class="pacientes">
+
+           </div>
+             
+            
+          </div>
+
 						<br>
 						<div class="row">
 
@@ -58,10 +74,10 @@
 							  <div id="origen1" class="origen1">
 
 						</div>
-
-
 						</div>
 					</div>
+
+      
 					<br>
 					
    <div class="row">
@@ -245,11 +261,14 @@
               <div class="col-sm-2 text-right" style="font-weight: 600; font-size: 12px">
                 Forma de Pago:
               </div> 
-              <select required aria-required="true" name="tipopago" class="form-control">
+              <select required aria-required="true" id="tp" name="tipopago" class="form-control">
                         <option value="EF">Seleccionar Tipo de Pago</option>
                         <option value="EF">Efectivo</option>
-                        <option value="TJ">Tarjeta</option> 
+                        <option value="TJ">Tarjeta</option>
               </select>
+              <div id="tpmx" class="tpmx">
+                
+              </div>
             </div>
           </div>
           <div class="form-group form-inline">
@@ -620,54 +639,85 @@ function createPac(e){
        
     </script>
 
-    <script>
-    	    function add_li()
-        {
-            var nuevoLi=document.getElementById("el3").value;
-            if(nuevoLi.length>0)
-            {
-                    var li=document.createElement('el3');
-                    li.id=nuevoLi;
-                    li.innerHTML="<span onclick='eliminar(this)'>X</span>"+nuevoLi;
-                    document.getElementById("listaDesordenada").appendChild(li);
-            }
-            return false;
-        }
-
- 
-        /**
-         * Funcion para eliminar los elementos
-         * Tiene que recibir el elemento pulsado
-         */
-        function eliminar(elemento)
-        {
-            var id=elemento.parentNode.getAttribute("id");
-            node=document.getElementById(id);
-            node.parentNode.removeChild(node);
-        }
 
 
+ <script type="text/javascript">
+      $(document).ready(function(){
+        $('#el1').on('change',function(){
+          var link;
+            link = '/movimientos/atenciones/dataPacientes/'+$(this).val();
+          $.ajax({
+                 type: "get",
+                 url:  link,
+                 success: function(a) {
+                    $('#pacientes').html(a);
+                 }
+          });
+
+        });
+        
+
+      });
+       
     </script>
+
+
+  <script type="text/javascript">
+
+
+  function datapac(){
+        
+     $('#el1').on('submit',function(){
+          var link;
+            link = '/movimientos/atenciones/dataPacientes/'+$(this).val();
+
+
+          $.ajax({
+                 type: "get",
+                 url:  link,
+                 success: function(a) {
+                    $('#pacientes').html(a);
+                 }
+          });
+
+        });
+
+    
+  </script>
+
+
+
+
     <script type="text/javascript">
-      function buscarSelect()
-{
-  // creamos un variable que hace referencia al select
-  var select=document.getElementById("elementos");
- 
-  // obtenemos el valor a buscar
-  var buscar=document.getElementById("buscar").value;
- 
-  // recorremos todos los valores del select
-  for(var i=1;i<select.length;i++)
-  {
-    if(select.options[i].text==buscar)
-    {
-      // seleccionamos el valor que coincide
-      select.selectedIndex=i;
-    }
-  }
-}
-</script>
+      $(document).ready(function(){
+        $('#tp').on('change',function(){
+          var link;
+          if ($(this).val() =='MX') {
+            link = '/movimientos/atencion/mx/';
+          } else {
+        link = '/movimientos/atencion/nada/';
+      }
+
+          $.ajax({
+                 type: "get",
+                 url:  link,
+                 success: function(a) {
+                    $('#tpmx').html(a);
+                 }
+          });
+
+        });
+        
+
+      });
+       
     </script>
+
+
+
+    
+   
+    </script>
+    
 @endsection
 @endsection

@@ -118,6 +118,8 @@ Route::post('pacientes/edit', 'Archivos\PacientesController@edit');
 Route::get('pacientes-delete-{id}','Archivos\PacientesController@delete');
 Route::get('pacientes-createpac','Archivos\PacientesController@createpac');
 Route::get('pacientes/view/{id}', 'Archivos\PacientesController@show');
+Route::get('pacienteByFiltro/{id}', 'Archivos\PacientesController@filtro');
+
 
 
 
@@ -300,6 +302,8 @@ Route::get('labpagados-reversar-{id}', 'LaboratoriosPagadosController@reversar')
 Route::get('movimientos/atencion/personal','AtencionesController@personal');
 Route::get('movimientos/atencion/profesional','AtencionesController@profesional');
 Route::get('movimientos/atencion/particular','AtencionesController@particular');
+Route::get('/movimientos/atenciones/dataPacientes/{id}','AtencionesController@verDataPacientes');
+
 
 Route::get('af/otros','ConsultaController@af');
 Route::get('af/ningunof','ConsultaController@ningunof');
