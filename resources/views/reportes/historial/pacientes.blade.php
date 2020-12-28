@@ -31,22 +31,38 @@
 			</div>
 			{!! Form::open(['method' => 'get', 'route' => ['historial.pacientes']]) !!}
 
-			<div class="row">
-					<div class="col-md-6">
+<div class="row">
 
-							<select id="el1"  name="paciente">
-								<option value="">Busque el Paciente</option>
-								@foreach($pacientes as $role)
-									<option value="{{$role->id}}">{{$role->apellidos}},{{$role->nombres}}-{{$role->dni}}</option>
-								@endforeach
-							</select>
-						</div>	
-				<div class="col-md-6">
-					{!! Form::submit(trans('Buscar'), array('class' => 'btn btn-info')) !!}
-					{!! Form::close() !!}
+	<div class="col-md-4">
+		<input type="text" name="filtro" placeholder="Buscar por apellidos">
+		
+	</div>
 
-				</div>
+	<div class="col-md-2">
+		{!! Form::submit(trans('Buscar'), array('class' => 'btn btn-info')) !!}
+		{!! Form::close() !!}
+	</div>
+	
+</div>
+
+			{!! Form::open(['method' => 'get', 'route' => ['historial.pacientes']]) !!}
+
+<div class="row">
+		<div class="col-md-6">
+
+				<select id="el1"  name="paciente">
+					<option value="">Busque el Paciente</option>
+					@foreach($pacientes as $role)
+						<option value="{{$role->dni}}">{{$role->apellidos}},{{$role->nombres}}-{{$role->dni}}</option>
+					@endforeach
+				</select>
 			</div>	
+	<div class="col-md-6">
+		{!! Form::submit(trans('Buscar'), array('class' => 'btn btn-info')) !!}
+		{!! Form::close() !!}
+
+	</div>
+</div>		
             <span><strong>ATENCIONES</strong></span>
 			<div class="box-content no-padding">
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
