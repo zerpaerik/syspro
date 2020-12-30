@@ -46,6 +46,9 @@
 		@if(Session::get('sedeName') == 'INDEPENDENCIA')
 		<p><strong>Teléfono: 5265711</strong></p>
 		<p><strong>WhatsApp: 940309507</strong></p>
+    @elseif(Session::get('sedeName') == 'ZARATE')
+    <p><strong>Teléfono: 7820512</strong></p>
+		<p><strong>WhatsApp: 924520026</strong></p>
 		@else
 		<p><strong>Teléfono: 5390547</strong></p>
 		<p><strong>WhatsApp: 940309506</strong></p>
