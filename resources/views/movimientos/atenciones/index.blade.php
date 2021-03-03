@@ -71,16 +71,16 @@
 		                <td>
 						@if(\Auth::user()->role_id == 6)
 						@if(Carbon\Carbon::now()->format('d-m-Y') == date('d-m-Y', strtotime($d->created_at)))
-						<td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket</a></td>
+						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket</a>
 						@else
-						<td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Hola</a></td>
+						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Hola</a>
 						@endif
 						@endif
 						@if(\Auth::user()->role_id <> 6)							 
-						<td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket2</a>
+						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket2</a>
 						<a class="btn btn-warning" href="{{$model . '-edit-' .$d->id}}">Editar</a>
 
-		                <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">Eliminar</a></td>
+		                <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">Eliminar</a>
 		                 @endif
 						 </td>
 						</tr>
