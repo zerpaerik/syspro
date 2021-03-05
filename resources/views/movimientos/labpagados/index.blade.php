@@ -86,8 +86,10 @@
 								<td>{{$atec->nompac}},{{$atec->apepac}}</td>
 							   <td>{{$atec->nombre}},{{$atec->apellido}}</td>
 							   <td>
+							   @if(\Auth::user()->role_id <> 6)							 
+
 							   	  <a href="labpagados-reversar-{{$atec->id}}" onclick="return confirm('¿Desea Reversar este registro?')" class="btn btn-danger">Reversar</a>
-							   	
+							   	@endif
 							   </td>
 
 							
