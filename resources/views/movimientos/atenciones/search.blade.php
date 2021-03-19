@@ -76,10 +76,10 @@
 						@endif
 						@endif
 						@if(\Auth::user()->role_id <> 6)							 
-						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket2</a>
-						<a class="btn btn-warning" href="{{$model . '-edit-' .$d->id}}">Editar</a>
+						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">TICK</a>
+						<a class="btn btn-warning" href="{{$model . '-edit-' .$d->id}}">EDIT</a>
 
-		                <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">Eliminar</a>
+		                <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">ELI</a>
 						</td>
 		                 @endif
 						</tr>
