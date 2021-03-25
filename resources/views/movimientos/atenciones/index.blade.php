@@ -42,12 +42,14 @@
 							<th>Origen</th>
 							<th>Detalle</th>
 							<th>Monto</th>
-							<th>Monto Abonado</th>
+							<th>Abono</th>
 							<th>Fecha</th>
-							<th>TipoIngreso</th>
-							<th>Registrado Por:</th>
-							<th>Acciones</th>
-							<th></th>
+							<th>TI</th>
+							<th>RP:</th>
+							<th>TCK</th>
+							<th>EDT</th>
+							<th>ELM</th>
+
 						</tr>
 					</thead>
 					<tbody>
@@ -68,20 +70,19 @@
 						<td>{{date('d-m-Y H:i', strtotime($d->created_at))}}</td>
 						<td>{{$d->tipo_ingreso}}</td>
 						<td>{{$d->user}},{{$d->userp}}</td>
-		                <td>
 						@if(\Auth::user()->role_id == 6)
 						@if(Carbon\Carbon::now()->format('d-m-Y') == date('d-m-Y', strtotime($d->created_at)))
-						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket</a>
+						<td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">Ver Ticket</a></td>
 						@else
 						@endif
-						@endif
+						@endif 
 						@if(\Auth::user()->role_id <> 6)							 
-						<a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">TICK</a>
-						<a class="btn btn-warning" href="{{$model . '-edit-' .$d->id}}">EDIT</a>
+						<td><a target="_blank" class="btn btn-primary" href="{{$model1.'-ver-'.$d->id}}">TICK</a></td>
+						<td><a class="btn btn-warning" href="{{$model . '-edit-' .$d->id}}">EDIT</a></td>
 
-		                <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">ELIM</a>
+						<td>  <a class="btn btn-danger" href="{{$model.'-delete-'.$d->id}}">ELIM</a></td>
 		                 @endif
-						 </td>
+						 
 						</tr>
 						@endforeach						
 					</tbody>
