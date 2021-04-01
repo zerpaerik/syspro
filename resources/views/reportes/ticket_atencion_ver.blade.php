@@ -170,7 +170,7 @@
     <div  style="font-size: 15px; text-align: left;margin-bottom:-20px;margin-top: 20px;">
 		<p style="margin-left: -40px;"><strong>PACIENTE:</strong> {{ $ticket->nombres}},{{ $ticket->apellidos}}</p>
     <p style="margin-left: -40px;margin-top: -10px;"><strong>DNI:</strong> {{ $ticket->dni}}</p>
-    <p style="margin-left: -40px;"><strong>ORIGEN:</strong> </p>
+    <p style="margin-left: -40px;"><strong>ORIGEN:</strong>{{ $ticket->nompac}},{{ $ticket->apepac}} </p>
 
 	
 	</div>
