@@ -799,9 +799,7 @@
       <span class="hidden-xs">Movimientos</span>
     </a>
     <ul class="dropdown-menu">
-      <li>
-        <a href="{{route('atenciones.index')}}"><i class="fa fa-plus-circle"></i> Ingreso de Atenciones</a>
-      </li>
+     
       <li>
         <a href="{{route('gastos.index')}}"><i class="fa fa-random"></i> Relación de Gastos</a>
       </li>
